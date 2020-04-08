@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Shoppy.jar" size="2300563" download="eager" />
+    <jar href="Shoppy.jar" size="2300517" download="eager" />
     <jar href="lib\activation.jar" size="55147" download="eager" />
     <jar href="lib\itextpdf-5.1.0.jar" size="1614453" download="eager" />
     <jar href="lib\itextpdf-5.4.1.jar" size="1898417" download="eager" />

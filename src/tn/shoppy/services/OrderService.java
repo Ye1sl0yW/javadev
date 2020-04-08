@@ -151,6 +151,7 @@ public class OrderService {
         List<Order> r1 = findOrdersByQte(input);
         List<Order> r2 = findOrdersByTotal(input);
         List<Order> r3 = findOrdersByID(input);
+         List<Order> r4= findOrdersByAdr(input);
 
         if(r1 != null){
             cleanResult.addAll(r1);
@@ -160,6 +161,9 @@ public class OrderService {
         }
         if(r3 != null){
             cleanResult.addAll(r3);
+        }
+        if(r4 != null){
+            cleanResult.addAll(r4);
         }
         List<Order> result = cleanResult.stream().distinct().collect(Collectors.toList());
         return result;
@@ -243,12 +247,39 @@ public List<Order> findOrdersByQte(String qt) {
             return null;
         }
     }
-    
-        public List<Order> findOrdersByID(String ID) {
+     public List<Order> findOrdersByID(String ID) {
         List<Order> list = new ArrayList<>();
         int count = 0;
         String s = "Archivage Active"; 
         String query = "SELECT * FROM commande WHERE convert(id,CHARACTER) like '%" + ID + "%' and adresse_liv not like '"+s+"%'";
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+
+                Order r = new Order();
+                r.setIdCmd(rs.getInt(1));
+                r.setTotal(rs.getFloat(2));
+                r.setQteTot(rs.getInt(3));
+                r.setAdresseLiv(rs.getString(5)); 
+                list.add(r);
+                count++;
+            }
+            if (count == 0) {
+                return null;
+            } else {
+                return list;
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            return null;
+        }
+    }
+        public List<Order> findOrdersByAdr(String ID) {
+        List<Order> list = new ArrayList<>();
+        int count = 0;
+        String s = "Archivage Active"; 
+        String query = "SELECT * FROM commande WHERE adresse_liv like '%" + ID + "%' and adresse_liv not like '"+s+"%'";
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(query);
