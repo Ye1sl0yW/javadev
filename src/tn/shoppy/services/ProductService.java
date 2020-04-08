@@ -234,7 +234,7 @@ public class ProductService {
         PreparedStatement pt;
         ResultSet rs=null ;
         try {
-            pt = cn.prepareStatement("select * from Produit");
+            pt = cn.prepareStatement("select * from produit");
             rs = pt.executeQuery();
         } catch (SQLException ex) {
             Logger.getLogger(ProductService.class.getName()).log(Level.SEVERE, null, ex);

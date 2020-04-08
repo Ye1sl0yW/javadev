@@ -67,7 +67,7 @@ public class Pdf {
 
             ProductService gp = new ProductService();
             ResultSet rs = gp.pdf();
-            float[] columnWidths = {4f, 4f,4f, 4f,4f,4f,4f};
+            float[] columnWidths = {4f, 4f,4f, 4f,4f,4f,4f,4f,4f};
             PdfPTable table = new PdfPTable(columnWidths);
             
             table.setWidthPercentage(110f);
@@ -80,18 +80,22 @@ public class Pdf {
             table.addCell("Id produit");
             table.addCell("id_magasin");
             table.addCell("quantité stock");
+            table.addCell("nom");
             table.addCell("description");
             table.addCell("prix");
             table.addCell("marque");
+            table.addCell("Image");
             table.addCell("date");
             while (rs.next()) {
                 table.addCell(String.valueOf(rs.getInt(1)));
                 table.addCell(String.valueOf(rs.getInt(2)));
                 table.addCell(String.valueOf(rs.getInt(3)));
                 table.addCell(rs.getString(4));
-                table.addCell(String.valueOf(rs.getDouble(5)));
-                table.addCell(rs.getString(6));
-                table.addCell(String.valueOf(rs.getDate(7)));
+                table.addCell(rs.getString(5));
+                table.addCell(String.valueOf(rs.getDouble(6)));
+                table.addCell(rs.getString(7));
+                table.addCell(rs.getString(8));
+                table.addCell(String.valueOf(rs.getDate(9)));
             }
             doc.add(table);
         } catch (Exception ex) {

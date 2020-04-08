@@ -400,7 +400,7 @@ public class ProductController implements Initializable{
     private void pdf_btn(ActionEvent event) {
                 if (!(productTable.getItems().isEmpty())) {
             Pdf.PdfListeProduits();
-                    System.out.println("ouui");
+                    System.out.println("Print to pdf done");
 
     
     }

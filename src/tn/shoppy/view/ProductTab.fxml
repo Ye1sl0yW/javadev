@@ -48,7 +48,7 @@
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="243.0">
                                     <children>
-                                        <Button fx:id="updateProductButton" layoutX="20.0" layoutY="335.0" mnemonicParsing="false" onAction="#updateProductAction" prefHeight="30.0" prefWidth="200.0" text="Valider">
+                                        <Button fx:id="updateProductButton" layoutX="20.0" layoutY="317.0" mnemonicParsing="false" onAction="#updateProductAction" prefHeight="30.0" prefWidth="200.0" text="Valider">
                                         </Button>
                                         <TextField fx:id="updateProductNameField" layoutX="14.0" layoutY="30.0" prefHeight="25.0" prefWidth="204.0" />
                                         <Text layoutX="17.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom du produit :" />
@@ -57,10 +57,10 @@
                                         <TextField fx:id="updateProductQuantityField" layoutX="69.0" layoutY="60.0" />
                                         <Text layoutX="28.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix :" />
                                         <TextField fx:id="updateProductPriceField" layoutX="70.0" layoutY="94.0" />
-                                        <TextArea fx:id="updateProductDescriptionArea" layoutX="22.0" layoutY="192.0" prefHeight="92.0" prefWidth="190.0" />
+                                        <TextArea fx:id="updateProductDescriptionArea" layoutX="22.0" layoutY="186.0" prefHeight="92.0" prefWidth="190.0" />
                                         <Text layoutX="19.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Marque :" />
                                         <TextField fx:id="updateProductBrandField" layoutX="69.0" layoutY="131.0" />
-                                        <ComboBox fx:id="updateProductShopComboBox" layoutX="23.0" layoutY="295.0" prefHeight="25.0" prefWidth="190.0" promptText="Magasin offrant" />                                                                               
+                                        <ComboBox fx:id="updateProductShopComboBox" layoutX="23.0" layoutY="285.0" prefHeight="25.0" prefWidth="190.0" promptText="Magasin offrant" />                                                                               
                                     </children>
                                 </AnchorPane>
                             </content>
@@ -69,7 +69,7 @@
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="193.0">
                                     <children>
-                                        <Button fx:id="addProductButton" layoutX="17.0" layoutY="343.0" mnemonicParsing="false" onAction="#addProductAction" prefHeight="30.0" prefWidth="200.0" text="Valider">
+                                        <Button fx:id="addProductButton" layoutX="17.0" layoutY="317.0" mnemonicParsing="false" onAction="#addProductAction" prefHeight="30.0" prefWidth="200.0" text="Valider">
                                             <cursor>
                                                 <!--<Cursor fx:constant="HAND" />-->
                                             </cursor>
@@ -81,10 +81,10 @@
                               <TextField fx:id="addProductQuantityField" layoutX="69.0" layoutY="60.0" />
                               <Text layoutX="28.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix :" />
                               <TextField fx:id="addProductPriceField" layoutX="70.0" layoutY="94.0" />
-                              <TextArea fx:id="addProductDescriptionArea" layoutX="23.0" layoutY="193.0" prefHeight="92.0" prefWidth="190.0" />
+                              <TextArea fx:id="addProductDescriptionArea" layoutX="23.0" layoutY="179.0" prefHeight="92.0" prefWidth="190.0" />
                               <Text layoutX="19.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Marque :" />
                               <TextField fx:id="addProductBrandField" layoutX="69.0" layoutY="131.0" />
-                              <ComboBox fx:id="addProductShopComboBox" layoutX="23.0" layoutY="302.0" prefHeight="25.0" prefWidth="190.0" promptText="Magasin offrant" />
+                              <ComboBox fx:id="addProductShopComboBox" layoutX="23.0" layoutY="282.0" prefHeight="25.0" prefWidth="190.0" promptText="Magasin offrant" />
                                     </children>
                                 </AnchorPane>
                             </content>
