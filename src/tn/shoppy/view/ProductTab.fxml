@@ -24,7 +24,7 @@
             <children>
                 <Button fx:id="searchProductButton" layoutX="339.0" layoutY="10.0" mnemonicParsing="false" onAction="#searchProductAction" text="Rechercher" />
                 <Label fx:id="searchProductLabel" layoutX="441.0" layoutY="15.0" text="Aucun produit ne correspond à votre recherche." />
-                <TextField fx:id="searchProductField" layoutX="14.0" layoutY="10.0" prefHeight="31.0" prefWidth="315.0" promptText="Trouver un produit.." />
+                <TextField fx:id="searchProductField" layoutX="14.0" layoutY="10.0" onKeyTyped="#typingSearchProductAction" prefHeight="31.0" prefWidth="315.0" promptText="Trouver un produit.." />
             </children>
         </Pane>
         <TableView fx:id="productTable" layoutY="54.0" onKeyPressed="#selectOneProductAction" onMouseClicked="#clickOneProductAction" prefHeight="551.0" prefWidth="802.0">

@@ -358,7 +358,7 @@ public class ProductController implements Initializable{
         }
     }
      
-     public void typingSearchProductAction() {
+     public void typingSearchProductAction(KeyEvent event) {
         List<Product> resultList = new ArrayList<>();
         ProductService productService = ProductService.getInstance();
         String input = searchProductField.getText();
@@ -367,8 +367,9 @@ public class ProductController implements Initializable{
             resultList = productService.findProductByNameOrDescription(input);
             productData.clear();
             productData.addAll(resultList);
-            searchProductLabel.setText("Résultat : "+resultList.size()+" ligne(s).");
             productTable.setItems(productData);   
+            searchProductLabel.setText("Résultat : "+resultList.size()+" ligne(s).");
+
         }
         else
         {

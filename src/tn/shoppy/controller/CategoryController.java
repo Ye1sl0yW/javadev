@@ -254,7 +254,7 @@ public class CategoryController implements Initializable{
         }
     }
      
-     public void typingSearchCategoryAction() {
+     public void typingSearchCategoryAction(KeyEvent event) {
         List<Category> resultList = new ArrayList<>();
         CategoryService categoryService = CategoryService.getInstance();
         String input = searchCategoryField.getText();
