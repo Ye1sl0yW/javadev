@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" fx:id="parent" prefHeight="626.0" prefWidth="805.0" styleClass="pane" stylesheets="@../assets/userwindow.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.shoppy.controller.CartController">
+    <children>
+        <Button layoutX="25.0" layoutY="25.0" mnemonicParsing="false" onAction="#exitWindow" prefHeight="35.0" prefWidth="53.0" styleClass="back-button" text="exit" />
+        <Label layoutX="337.0" layoutY="34.0" styleClass="heading" text="Votre Panier" />
+
+        <ScrollPane hbarPolicy="NEVER" layoutY="97.0" prefHeight="529.0" prefWidth="805.0" styleClass="no-padding">
+            <content>
+              <AnchorPane prefHeight="526.0" prefWidth="811.0" styleClass="no-padding">
+                <children>
+                    <VBox fx:id="productList" layoutX="25.0" prefWidth="350.0" />
+                    <AnchorPane layoutX="309.0" layoutY="322.0" prefWidth="150.0" styleClass="no-padding">
+                        <children>
+                            <Label layoutX="18.0" styleClass="heading-sub" text="Summary" />
+                        <Label layoutX="1.0" layoutY="55.0" text="Gross:" />
+                        <Label fx:id="grossTotal" alignment="CENTER_RIGHT" layoutX="47.0" layoutY="55.0" prefHeight="17.0" prefWidth="103.0" text="RM0.00" />
+                        <Label layoutX="1.0" layoutY="75.0" text="Packaging:" />
+                        <Label fx:id="packagingTotal" alignment="CENTER_RIGHT" layoutX="73.0" layoutY="75.0" prefHeight="17.0" prefWidth="77.0" text="RM0.00" />
+                        <Label layoutX="1.0" layoutY="95.0" text="Total:" />
+                        <Label fx:id="total" alignment="CENTER_RIGHT" layoutX="40.0" layoutY="95.0" prefHeight="17.0" prefWidth="110.0" styleClass="green-text" text="RM0.00" />
+                        <Button layoutY="125.0" mnemonicParsing="false" onAction="#checkout" prefHeight="39.0" prefWidth="150.0" styleClass="action-button" text="Check Out" />
+                        </children>
+                    </AnchorPane>
+                </children>
+              </AnchorPane>
+            </content>
+        </ScrollPane>
+    </children>
+</AnchorPane>

@@ -42,6 +42,7 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.PdfPCell;
+import static java.awt.Color.gray;
 import static java.awt.Color.red;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -62,7 +63,15 @@ import javax.xml.parsers.DocumentBuilder;
 import static jdk.nashorn.internal.objects.NativeMath.random;
 import tn.shoppy.model.OrderStat;
 import tn.shoppy.utils.InputCheck;
+import java.util.Properties;
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
 
+import java.util.*;  
+import javax.mail.*;  
+import javax.mail.internet.*;  
+import javax.activation.*;
 /**
  *
  * @author asus
@@ -81,8 +90,6 @@ public class OrderController implements Initializable {
     private TableColumn<Order, Integer> idColumn;
     @FXML
      private TableColumn<Order, Integer> IdAch;
-     @FXML
-     private TableColumn<Order, LocalDateTime> date;
     @FXML
     private TableColumn<Order, String> AdresseLivColumn;
     @FXML
@@ -122,6 +129,8 @@ public class OrderController implements Initializable {
     private Button Archivage;
     @FXML
     private TextField OrderCreatedDate;
+    @FXML
+    private Button delete;
     
    
 
@@ -220,7 +229,9 @@ public class OrderController implements Initializable {
     //**************D**************//.
     @FXML
     public void deleteOrderAction() {
+        
         ObservableList<Order> selectedItems = orderTable.getSelectionModel().getSelectedItems();
+
         System.out.println(selectedItems);
         Alert a = new Alert(Alert.AlertType.CONFIRMATION, "Êtes-vous sûr(e) de vouloir supprimer ces " + selectedItems.size() + " éléments de la base de données ?", ButtonType.YES, ButtonType.NO);
         a.showAndWait();
@@ -288,7 +299,6 @@ public class OrderController implements Initializable {
         }
     }
    
-    @FXML
     public void fillUpdateForm(Order order)
     {
 //Build formatter
@@ -332,11 +342,13 @@ String formattedDateTime = order.getDateCreation().format(formatter);
                     OrderService orderService = OrderService.getInstance();
                     orderService.updateOrder(order);
                     a.close();
-                }
-                else
-                {
-                    Alert inputAlert = new Alert(Alert.AlertType.ERROR,"Le format de données saisi est incorrect.",ButtonType.OK);
-                }
+                }else
+        {
+               JOptionPane.showMessageDialog(null, "verifier votre valeurs des champs");
+           
+            System.out.println(" Wrong input format !");
+        }
+               
             }else{
             a.close();
             }
@@ -389,6 +401,7 @@ String formattedDateTime = order.getDateCreation().format(formatter);
     @FXML
     private void CreatePdfAction(ActionEvent event) {
         float total=0 ; 
+        String client1="no one";
            float[] columnWidths =  {1.5f, 2f, 5f, 2f};
          Font bfBold12 = new Font(FontFamily.TIMES_ROMAN, 12, Font.BOLD, new BaseColor(0, 0, 0)); 
    Font bf12 = new Font(FontFamily.TIMES_ROMAN, 12);    
@@ -418,7 +431,7 @@ double i=random(1000);
      */  
 
             com.itextpdf.text.Paragraph p = new com.itextpdf.text.Paragraph();
-            p.add("Facture num"+Selecteditem.getIdCmd());
+            p.add("Facture num "+Selecteditem.getIdCmd());
             p.setAlignment(com.itextpdf.text.Element.ALIGN_CENTER);
             document.add(p);
         Image    img=Image.getInstance("D:\\Downloads\\javadev-master\\src\\tn\\shoppy\\resources\\images\\logo.png");
@@ -430,19 +443,20 @@ double i=random(1000);
         "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&" +
         "serverTimezone=UTC", "root", "");
             Statement st = con.createStatement();
-            
+         String ad=   Selecteditem.getAdresseLiv();
         int  a=Selecteditem.getIdCmd();
-        
-
+         int x=Selecteditem.getId_Acheteur();
             ResultSet rs = st.executeQuery("SELECT id,id_product,qte,totalLigne FROM `ligne_cmd` WHERE  id_cmd = " + a);
            
             int b=1; while (rs.next()) {
               //  table.addCell(rs.getString("id"));
              
-              int c =rs.getInt("id_product");
+                int c =rs.getInt("id_product");
+               
                    float nv = rs.getFloat("totalLigne");
                     total=total+nv;
              Statement stt = con.createStatement();
+              
               ResultSet rss = stt.executeQuery("SELECT nom, description FROM `produit` WHERE  id = " + c);
               if(rss.next()){
   String detail = rss.getString(1)+ "  ";
@@ -456,10 +470,19 @@ double i=random(1000);
                    insertCell(table, rs.getString("totalLigne"), com.itextpdf.text.Element.ALIGN_RIGHT, 1, bfBold12);
                    b++; 
 
-              /*   table.addCell(rs.getString("id_product"));
+              /*  newi tahrko el pc f aklek
+                   table.addCell(rs.getString("id_product"));
                    table.addCell(rs.getString("qte"));
                    table.addCell(rs.getString("totalLigne"));
-            */}}
+            */}
+                Statement stt1 = con.createStatement();
+             ResultSet rxx = stt1.executeQuery("SELECT nom,prenom,tel FROM `users` WHERE  id = " + x);
+               if(rxx.next()){
+           // les  3 cmds loulin teskhahomch
+        
+           String client= rxx.getString(1)+" "+rxx.getString(2)+" \n \n  Tel :"+rxx.getInt(3)+" \n \n Adresse Livraison: "+ad;
+            client1=client;
+            }}
             document.add(table);
       
            com.itextpdf.text.Paragraph t = new com.itextpdf.text.Paragraph();
@@ -468,6 +491,13 @@ double i=random(1000);
             t.setSpacingBefore(20);
             t.setAlignment(com.itextpdf.text.Element.ALIGN_CENTER);
             document.add(t);
+            int aa=1;
+               com.itextpdf.text.Paragraph t1 = new com.itextpdf.text.Paragraph();
+            Font ff1 = new Font(FontFamily.TIMES_ROMAN, 15, Font.BOLD, new BaseColor(gray)); 
+            t1.add(new Chunk("Client : "+client1,ff1));
+            t1.setSpacingBefore(40);
+            t1.setAlignment(com.itextpdf.text.Element.ALIGN_CENTER);
+            document.add(t1);
             
             JOptionPane.showMessageDialog(
                     null, " données exportées en pdf avec succés ");
@@ -541,5 +571,77 @@ private void insertCell(PdfPTable table, String text, int align, int colspan, Fo
     }
 
 
+@FXML
+    public void SendMailAction() {
+         ObservableList<Order> selectedItems = orderTable.getSelectionModel().getSelectedItems();
+           Order Selecteditem= orderTable.getSelectionModel().getSelectedItem();
+                  if (!Selecteditem.getClass().equals(selectedItems.getClass())) {}
+               try{
+        
+        String to="testmail1235omar@gmail.com";//change accordingly  
+  final String user="testmail1235omar@gmail.com";//change accordingly  
+  final String password="123456omar";//change accordingly  
+  //1) get the session object     
+ 
+  Properties properties = System.getProperties();  
+        properties.setProperty("mail.transport.protocol", "smtp");
+        properties.setProperty("mail.host", "smtp.gmail.com");
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.port", "587");
+
+        properties.put("mail.smtp.starttls.enable","true");
+        properties.put("mail.smtp.socketFactory.port", "465");
+        properties.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
+        properties.put("mail.smtp.socketFactory.fallback", "false"); 
+  
+  Session session = Session.getDefaultInstance(properties,  
+   new javax.mail.Authenticator() {  
+   protected PasswordAuthentication getPasswordAuthentication() {  
+   return new PasswordAuthentication(user,password);  
+   }  
+  });  
+     
+  //2) compose message     
+  try{  
+    MimeMessage message = new MimeMessage(session);  
+    message.setFrom(new InternetAddress(user));  
+    message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));  
+    message.setSubject("Shoppy");  
+      
+    //3) create MimeBodyPart object and set your message text     
+    BodyPart messageBodyPart1 = new MimeBodyPart();  
+    messageBodyPart1.setText("Bonjour Cher Client(e)  \n ci-jointe ta facture suite au dernier achat  \n merci pour votre fidelité \n Cordialement");  
+      
+    //4) create new MimeBodyPart object and set DataHandler object to this object      
+    MimeBodyPart messageBodyPart2 = new MimeBodyPart();  
+  
+    String filename1 = "D:\\order8.pdf";//change accordingly  
+     String filename ="C:\\Users\\asus\\Desktop\\order"+Selecteditem.getIdCmd()+".pdf";
+    DataSource source = new FileDataSource(filename);  
+    messageBodyPart2.setDataHandler(new DataHandler(source));  
+    messageBodyPart2.setFileName("order"+Selecteditem.getIdCmd()+".pdf");  
+     
+     
+    //5) create Multipart object and add MimeBodyPart objects to this object      
+    Multipart multipart = new MimeMultipart();  
+    multipart.addBodyPart(messageBodyPart1);  
+    multipart.addBodyPart(messageBodyPart2);  
+  
+    //6) set the multiplart object to the message object  
+    message.setContent(multipart );  
+     
+    //7) send message  
+    Transport.send(message);  
+   
+  JOptionPane.showMessageDialog(
+                    null, " mail envoyé avec succés ");
+   }catch (MessagingException ex) {ex.printStackTrace();}  
+               }catch (Exception e) {
+
+            System.out.println("Error PDF");
+            System.out.println(e.getStackTrace());
+            System.out.println(e.getMessage());
+        }
+    }
 
 }

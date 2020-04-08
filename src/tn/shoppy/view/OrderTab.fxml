@@ -101,10 +101,11 @@
                 </HBox>
             </children>
         </VBox>
-        <Button layoutX="859.0" layoutY="568.0" mnemonicParsing="false" onAction="#deleteOrderAction" text="Supprimer la selection" />
+        <Button fx:id="delete" layoutX="917.0" layoutY="568.0" mnemonicParsing="false" onAction="#deleteOrderAction" text="Supprimer la selection" />
       <Button fx:id="CreatePdfButton" layoutX="809.0" layoutY="514.0" mnemonicParsing="false" onAction="#CreatePdfAction" prefHeight="25.0" prefWidth="100.0" text="Generer PDF" />
       <Button fx:id="Archivage" layoutX="917.0" layoutY="514.0" mnemonicParsing="false" onAction="#ArchiverCmdAction" prefHeight="25.0" prefWidth="134.0" text="Archiver Element" />
       <Label layoutX="809.0" layoutY="17.0" text="Creé en :" />
        <TextField fx:id="OrderCreatedDate" layoutX="875.0" layoutY="13.0" />
+      <Button layoutX="809.0" layoutY="568.0" mnemonicParsing="false" onAction="#SendMailAction" prefHeight="25.0" prefWidth="100.0" text="Envoyer Mail" />
          </children>
 </AnchorPane>

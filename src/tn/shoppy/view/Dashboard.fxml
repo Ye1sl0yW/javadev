@@ -34,6 +34,9 @@
                  <Tab closable="false" text="Statisques">
                     <fx:include fx:id="Stat" source="Nv.fxml" />
                 </Tab>
+                <Tab closable="false" text="Panier">
+                    <fx:include fx:id="Cart" source="CartWindow.fxml" />
+                </Tab>
                 <Tab closable="false" disable="true" text="WIP">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="196.0" prefWidth="600.0" />
