@@ -27,6 +27,7 @@
                 <!--<Tab closable="false" text="Gestion des Magasins">
                     <fx:include fx:id="shopTab" source="ShopTab.fxml" />
                 </Tab>
+<<<<<<< HEAD
                 -->
                 <Tab closable="false" text="Gestion des Commandes">
                     <fx:include fx:id="orderTab" source="OrderTab.fxml" />
@@ -36,6 +37,21 @@
                 </Tab>
                 <Tab closable="false" text="Panier">
                     <fx:include fx:id="Cart" source="CartWindow.fxml" />
+=======
+                <Tab closable="false" text="Gestion des produits">
+                    <fx:include fx:id="productTab" source="ProductTab.fxml" />
+                </Tab>
+                <Tab closable="false" disable="false" text="Gestion des offres">
+                    <fx:include fx:id="offerTab" source="OfferTab.fxml" />
+                </Tab>
+                <Tab closable="false" disable="false" text="Gestion des catégories">
+                    <fx:include fx:id="categoryTab" source="CategoryTab.fxml" />
+                </Tab>
+                <Tab text="POUR OMAR">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+>>>>>>> origin/anas
                 </Tab>
                 <Tab closable="false" disable="true" text="WIP">
                     <content>

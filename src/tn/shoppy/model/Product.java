@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author asus
+ * 
+ * @author anas fattoum
  */
 public class Product {
     private int id;
@@ -43,9 +43,6 @@ public class Product {
         categoriesString = "Pas de catégorie.";
     }
 
-    public Product(String text, String text0, int i, int parseInt, Object object, Object object0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     /**
      * Methods 

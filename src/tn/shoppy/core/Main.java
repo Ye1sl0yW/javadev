@@ -2,6 +2,7 @@ package tn.shoppy.core;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.List;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,6 +10,12 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import tn.shoppy.controller.DashboardController;
+<<<<<<< HEAD
+=======
+import tn.shoppy.services.OfferService;
+import tn.shoppy.services.ProductService;
+import tn.shoppy.services.CategoryService;
+>>>>>>> origin/anas
 
 import tn.shoppy.utils.ConnectionDB;
 
@@ -23,6 +30,13 @@ public class Main extends Application {
     public static void main(String[] args) {
         ConnectionDB cbd = ConnectionDB.getInstance();
         Connection cnx = cbd.getCnx();
+<<<<<<< HEAD
+=======
+        
+        //Debug
+        //End debug
+        
+>>>>>>> origin/anas
         launch(args);
     }
     
