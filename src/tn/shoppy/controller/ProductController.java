@@ -135,7 +135,6 @@ public class ProductController implements Initializable{
         productData.clear();
         if (productList != null) {
             productData.addAll(productList);
-            productIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
             productNameColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
             productShopColumn.setCellValueFactory(new PropertyValueFactory<>("id_magasin"));
             productBrandColumn.setCellValueFactory(new PropertyValueFactory<>("marque"));

@@ -29,7 +29,6 @@
         </Pane>
         <TableView fx:id="productTable" layoutY="54.0" onKeyPressed="#selectOneProductAction" onMouseClicked="#clickOneProductAction" prefHeight="551.0" prefWidth="802.0">
             <columns>
-                <TableColumn fx:id="productIdColumn" prefWidth="56.0" text="ID" />
                 <TableColumn fx:id="productNameColumn" prefWidth="96.66668701171875" text="Nom" />
             <TableColumn fx:id="productShopColumn" prefWidth="67.00003051757812" text="ID Magasin" />
             <TableColumn fx:id="productBrandColumn" prefWidth="75.0" text="Marque" />

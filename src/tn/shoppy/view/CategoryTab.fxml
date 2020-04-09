@@ -27,7 +27,6 @@
         </Pane>
         <TableView fx:id="categoryTable" layoutY="54.0" onKeyPressed="#selectOneCategoryAction" onMouseClicked="#clickOneCategoryAction" prefHeight="551.0" prefWidth="802.0">
             <columns>
-                <TableColumn fx:id="categoryIdColumn" prefWidth="56.0" text="ID" />
                 <TableColumn fx:id="categoryNameColumn" prefWidth="96.66668701171875" text="Nom" />
             </columns>
         </TableView>

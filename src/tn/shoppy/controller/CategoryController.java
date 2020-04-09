@@ -77,7 +77,6 @@ public class CategoryController implements Initializable{
         categoryData.clear();
         if (categoryList != null) {
             categoryData.addAll(categoryList);
-            categoryIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
             categoryNameColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
 
 
