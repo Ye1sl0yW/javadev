@@ -16,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -55,8 +56,6 @@ public class ProductController implements Initializable{
      */
     @FXML
     private TableView<Product> productTable;
-    @FXML
-    private TableColumn<Product, Integer> productIdColumn;
     @FXML
     private TableColumn<Product, String> productNameColumn;
     @FXML
@@ -124,6 +123,8 @@ public class ProductController implements Initializable{
     private Button deleteProductAction;
     @FXML
     private Button pdf_btn;
+    @FXML
+    private Button btstat;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -357,6 +358,7 @@ public class ProductController implements Initializable{
         }
     }
      
+    @FXML
      public void typingSearchProductAction(KeyEvent event) {
         List<Product> resultList = new ArrayList<>();
         ProductService productService = ProductService.getInstance();
@@ -406,4 +408,18 @@ public class ProductController implements Initializable{
     }
 
 }
+
+    @FXML
+    public void btstat(ActionEvent event) {
+           try {
+            Parent root = FXMLLoader.load(getClass().getResource("/tn/shoppy/view/statE.fxml"));
+            Scene scene = new Scene(root);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+            window.show();
+
+        } catch (IOException ex) {
+        }
+    }
+
 }

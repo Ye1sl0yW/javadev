@@ -24,7 +24,7 @@ public class ProductService {
     private static ProductService productServiceInstance;
     private final Connection cn = ConnectionDB.getCnx();
     
-    ProductService(){}
+    public ProductService(){}
        
     public static ProductService getInstance() {   //Singleton Design Pattern
         if (productServiceInstance==null)
