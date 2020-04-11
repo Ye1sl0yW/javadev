@@ -8,6 +8,7 @@ package tn.shoppy.model;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import tn.shoppy.services.ProductService;
 
 /**
  *
@@ -73,9 +74,15 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" + "id=" + id + ", id_magasin=" + id_magasin + ", nom=" + nom + 
+//        if (categoriesID.size()>0 &&ProductService.getInstance().getAllCategoriesAsString(this.id)!=null) {
+//            categoriesString = ProductService.getInstance().getAllCategoriesAsString(this.id);
+//        }
+        String r = "Product{" + "id=" + id + ", id_magasin=" + id_magasin + ", nom=" + nom + 
                 ", quantite=" + quantite + ", description=" + description + 
                 ", prix=" + prix + ", marque=" + marque + "ID catégories" + categoriesID + categoriesString +'}';
+        
+
+    return r;
     }
     
     
