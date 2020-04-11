@@ -67,7 +67,7 @@ public class Shop {
 
     @Override
     public String toString() {
-        return nom +"  => Nom : " + nom +", Responsable: "+this.getId_vendeur()+ ", mattricule fiscal: " + matricule_fiscal;
+        return nom +"  =>  Responsable: "+this.getId_vendeur()+ ", mattricule fiscal: " + matricule_fiscal;
     }
 
     
