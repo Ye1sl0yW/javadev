@@ -25,6 +25,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import tn.shoppy.controller.ShopController;
 import tn.shoppy.model.Offer;
 import tn.shoppy.model.Shop;
 import tn.shoppy.services.ExcelExport;
@@ -99,14 +100,14 @@ public class SellerOfferController implements Initializable {
         this.sessionShop = sessionShop;
     }
     public SellerOfferController(){
-        this.sessionShop = new Shop();
-        this.sessionShop.setId(10);
+        this.sessionShop = ShopController.sessionShop;
+        
     }
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         offerTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        System.out.println(sessionShop);
+//        System.out.println(sessionShop);
         addOfferStartDatePicker.setValue(Optional.ofNullable(addOfferStartDatePicker.getValue()).orElse(LocalDate.now()));
         addOfferEndDatePicker.setValue(Optional.ofNullable(addOfferEndDatePicker.getValue()).orElse(LocalDate.now()));
 

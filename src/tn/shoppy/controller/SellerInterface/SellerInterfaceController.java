@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
+import static tn.shoppy.controller.ShopController.sessionShop;
 import tn.shoppy.model.Shop;
 import tn.shoppy.utils.ConnectionDB;
 
@@ -19,51 +20,24 @@ import tn.shoppy.utils.ConnectionDB;
  */
 public class SellerInterfaceController implements Initializable {
 
-    private Shop sessionShop;
     Connection cnx = ConnectionDB.getCnx();
-    
-    public SellerInterfaceController(){
-        sessionShop = null;
-    }
-    
-    public SellerInterfaceController(Shop shop){
-        this.sessionShop = shop;
-    }
+   
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println(sessionShop);
+//        Setting the controller for the offer tab ( unused)
+        FXMLLoader offerLoader = new FXMLLoader(getClass().getResource("/tn/shoppy/view/SellerInterface/OfferTab.fxml"));
+        SellerOfferController oc = new SellerOfferController(sessionShop);
+        offerLoader.setControllerFactory(p -> oc);
+        
+//        Setting the controller for the products tab (unused)
+        FXMLLoader productLoader = new FXMLLoader(getClass().getResource("/tn/shoppy/view/SellerInterface/ProductTab.fxml"));
+        SellerProductController pc = new SellerProductController(sessionShop);
+        productLoader.setControllerFactory(x -> pc);
+
+        
     }
 
-    /**
-     * Session shop operations
-     */
-    public void setSessionShop(Shop shop)
-    {
-        this.sessionShop = shop;
-        
-        //Setting the controller for the offer tab
-        FXMLLoader offerLoader = new FXMLLoader(getClass().getResource("/tn/shoppy/view/SellerInterface/OfferTab.fxml"));
-        SellerOfferController oc = new SellerOfferController(shop);
-        offerLoader.setControllerFactory(p -> oc);
-//        System.out.println(getClass().getResource("/tn/shoppy/view/SellerInterface/OfferTab.fxml"));
-//        System.out.println(oc.getSessionShop());
-        
-        //Setting the controller for the products tab
-        FXMLLoader productLoader = new FXMLLoader(getClass().getResource("/tn/shoppy/view/SellerInterface/ProductTab.fxml"));
-        SellerProductController pc = new SellerProductController(shop);
-        productLoader.setControllerFactory(x -> pc);
-//        System.out.println(getClass().getResource("/tn/shoppy/view/SellerInterface/ProductTab.fxml"));
-//        System.out.println(pc);
-        
-    }
-    
-    public Shop getSessionShop()
-    {
-        return this.sessionShop;
-    }
-    
-    /**
-     * 
-     */
+
 }

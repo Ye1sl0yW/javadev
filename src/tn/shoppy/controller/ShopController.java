@@ -45,6 +45,7 @@ import tn.shoppy.utils.InputCheck;
  */
 public class ShopController implements Initializable {
     Connection cnx = ConnectionDB.getCnx();
+    public static Shop sessionShop;
 
     /**
      * UI attributes
@@ -323,10 +324,10 @@ public class ShopController implements Initializable {
     {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn/shoppy/view/SellerInterface/SellerInterface.fxml"));
         
-        Shop shop = (Shop) shopTable.getSelectionModel().getSelectedItem();        
-        if(shop != null)
+        sessionShop = shopTable.getSelectionModel().getSelectedItem();        
+        if(sessionShop != null)
         {
-            Alert a=new Alert(Alert.AlertType.CONFIRMATION,"Êtes-vous sûr(e) de vouloir passer à la page de "+ shop.getNom()+" ?",ButtonType.YES,ButtonType.NO);
+            Alert a=new Alert(Alert.AlertType.CONFIRMATION,"Êtes-vous sûr(e) de vouloir passer à la page de "+ sessionShop.getNom()+" ?",ButtonType.YES,ButtonType.NO);
             a.showAndWait();
             if(a.getResult()==ButtonType.YES){
                 try {
@@ -334,9 +335,10 @@ public class ShopController implements Initializable {
                     
 //                    SellerInterfaceController sic = loader.getController();
 //                    sic.setSessionShop(shop);
-                    loader.setControllerFactory(c -> {
-                        return new SellerInterfaceController(shop);
-                    });
+//
+//                    loader.setControllerFactory(c -> {
+//                        return new SellerInterfaceController(shop);
+//                    });
 
                     Scene scene = new Scene(root);
                     Stage sellerInterface = new Stage();

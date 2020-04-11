@@ -25,6 +25,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import static tn.shoppy.controller.ShopController.sessionShop;
 import tn.shoppy.model.Product;
 import tn.shoppy.model.Shop;
 import tn.shoppy.services.ProductService;
@@ -106,8 +107,7 @@ public class SellerProductController implements Initializable{
     
     public SellerProductController()
     {
-        this.sessionShop = new Shop();
-        this.sessionShop.setId(11);
+        this.sessionShop = ShopController.sessionShop;
     }
     
     @Override
