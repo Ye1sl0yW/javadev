@@ -326,5 +326,46 @@ public class OfferService {
         } 
     }
 
-
+    public String getShopName(Offer offer)
+    {
+        String result = "Pas de magasin";   
+        
+        String query="select nom from Magasin where id = "+offer.getId_magasin()+";";
+        try{
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            System.out.println(query);
+            while (rs.next()){
+                result = rs.getString(1);
+                return result;
+            }
+        }
+        catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            return null;
+        }
+        return result;
+    }
+    
+    public String getShopName(int offerID)
+    {
+        String result = "Pas de magasin";   
+        
+        String query="select nom from Magasin where id = "+offerID+";";
+        try{
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            System.out.println();
+            while (rs.next()){
+                result = rs.getString(1);
+                return result;
+            }
+        }
+        catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            return null;
+        }
+        return result;
+    }
+    
 }

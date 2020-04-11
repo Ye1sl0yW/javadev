@@ -6,6 +6,7 @@
 package tn.shoppy.model;
 
 import java.sql.Date;
+import tn.shoppy.services.OfferService;
 
 
 /**
@@ -18,6 +19,7 @@ public class Offer {
      */
     private int id;
     private int id_magasin;
+    private String shopName;
     private double taux;
     private String nom;
     private String description;
@@ -31,6 +33,7 @@ public class Offer {
     {
         this.id = id;
         id_magasin = shopID;
+        shopName = OfferService.getInstance().getShopName(shopID);
         taux = rate;
         nom = name;
         this.description = description;
@@ -129,6 +132,14 @@ public class Offer {
 
     public void setDate_fin(Date date_fin) {
         this.date_fin = date_fin;
+    }
+
+    public String getShopName() {
+        return shopName;
+    }
+
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
     }
 
     
