@@ -49,8 +49,6 @@ public class SellerOfferController implements Initializable {
     @FXML
     private TableView<Offer> offerTable;
     @FXML
-    private TableColumn<Offer, Integer> offerIdColumn;
-    @FXML
     private TableColumn<Offer, String> offerNameColumn;
     @FXML
     private TableColumn<Offer, Double> offerRateColumn;
@@ -116,7 +114,6 @@ public class SellerOfferController implements Initializable {
         offerData.clear();
         if (offerList != null) {
             offerData.addAll(offerList);
-            offerIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
             offerNameColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
             offerRateColumn.setCellValueFactory(new PropertyValueFactory<>("taux"));
             offerDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
