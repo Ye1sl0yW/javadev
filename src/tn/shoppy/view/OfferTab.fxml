@@ -31,7 +31,7 @@
             <columns>
                 <TableColumn fx:id="offerNameColumn" prefWidth="149.0" text="Nom" />
             <TableColumn fx:id="offerShopNameColumn" prefWidth="111.0" text="Magasin offrant" />
-                <TableColumn fx:id="offerRateColumn" prefWidth="65.0" text="Taux" />
+            <TableColumn fx:id="offerRateStringColumn" prefWidth="75.0" text="Taux" />
                 <TableColumn fx:id="offerDescriptionColumn" prefWidth="265.0" text="Description" />
                 <TableColumn fx:id="offerStartDateColumn" minWidth="0.0" prefWidth="108.0" text="Début" />
                 <TableColumn fx:id="offerEndDateColumn" prefWidth="103.0" text="Fin" />

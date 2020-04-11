@@ -21,6 +21,7 @@ public class Offer {
     private int id_magasin;
     private String shopName;
     private double taux;
+    private String rateAsString;
     private String nom;
     private String description;
     private Date date_debut;
@@ -35,6 +36,7 @@ public class Offer {
         id_magasin = shopID;
         shopName = OfferService.getInstance().getShopName(shopID);
         taux = rate;
+        rateAsString = String.valueOf(rate*100)+ "%";
         nom = name;
         this.description = description;
         date_debut = startDate;
@@ -101,6 +103,7 @@ public class Offer {
 
     public void setTaux(double taux) {
         this.taux = taux;
+        this.rateAsString = String.valueOf(100*taux)+" %";
     }
 
     public String getNom() {
@@ -141,6 +144,14 @@ public class Offer {
 
     public void setShopName(String shopName) {
         this.shopName = shopName;
+    }
+
+    public String getRateAsString() {
+        return rateAsString;
+    }
+
+    public void setRateAsString(String rateAsString) {
+        this.rateAsString = rateAsString;
     }
 
     
