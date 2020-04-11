@@ -28,11 +28,10 @@
         </Pane>
         <TableView fx:id="shopTable" layoutY="53.0" onKeyPressed="#selectOneShopAction" onMouseClicked="#clickOneShopAction" prefHeight="551.0" prefWidth="802.0">
             <columns>
-                <TableColumn fx:id="shopIdColumn" prefWidth="65.0" text="ID" />
-                <TableColumn fx:id="shopNameColumn" prefWidth="129.0" text="Nom" />
-            <TableColumn fx:id="shopSellerNameColumn" prefWidth="191.0" text="Nom vendeur" />
-                <TableColumn fx:id="shopFiscalityColumn" prefWidth="212.0" text="Matricule fiscal" />
-                <TableColumn fx:id="shopStockColumn" prefWidth="204.0" text="Taille du stock" />
+                <TableColumn fx:id="shopNameColumn" prefWidth="181.0" text="Nom" />
+            <TableColumn fx:id="shopSellerNameColumn" prefWidth="207.0" text="Nom vendeur" />
+                <TableColumn fx:id="shopFiscalityColumn" prefWidth="219.0" text="Matricule fiscal" />
+                <TableColumn fx:id="shopStockColumn" prefWidth="194.0" text="Taille du stock" />
             </columns>
         </TableView>
         <VBox layoutX="811.0" layoutY="51.0" prefHeight="444.0" prefWidth="245.0">

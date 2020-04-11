@@ -334,7 +334,6 @@ public class OfferService {
         try{
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(query);
-            System.out.println(query);
             while (rs.next()){
                 result = rs.getString(1);
                 return result;
@@ -355,7 +354,6 @@ public class OfferService {
         try{
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(query);
-            System.out.println();
             while (rs.next()){
                 result = rs.getString(1);
                 return result;
