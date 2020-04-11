@@ -29,7 +29,7 @@
         <TableView fx:id="offerTable" layoutY="53.0" onKeyPressed="#selectOneOfferAction" onMouseClicked="#clickOneShopAction" prefHeight="551.0" prefWidth="802.0">
             <columns>
                 <TableColumn fx:id="offerNameColumn" prefWidth="142.0" text="Nom" />
-                <TableColumn fx:id="offerRateColumn" prefWidth="100.0" text="Taux" />
+                <TableColumn fx:id="offerRateStringColumn" prefWidth="100.0" text="Taux" />
                 <TableColumn fx:id="offerDescriptionColumn" prefWidth="328.0" text="Description" />
                 <TableColumn fx:id="offerStartDateColumn" minWidth="0.0" prefWidth="121.0" text="Début" />
                 <TableColumn fx:id="offerEndDateColumn" prefWidth="110.0" text="Fin" />
