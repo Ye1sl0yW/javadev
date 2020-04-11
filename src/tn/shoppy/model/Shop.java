@@ -1,6 +1,7 @@
 package tn.shoppy.model;
 
 import javafx.beans.property.StringProperty;
+import tn.shoppy.services.ShopService;
 
 /**
  * Model class for a shop (Magasin)
@@ -9,6 +10,7 @@ import javafx.beans.property.StringProperty;
 public class Shop {
     private int id;
     private Integer id_vendeur;
+    private String sellerName;
     private String nom;
     private int taille_stock;
     private int matricule_fiscal;
@@ -26,6 +28,10 @@ public class Shop {
     {
         this.id = id;
         this.id_vendeur=id_vendeur;
+        this.sellerName="Pas de responsable";
+        if (id_vendeur != null){
+            this.sellerName=ShopService.getInstance().getShopSellerName(this);
+        }
         this.nom = nom;
         this.matricule_fiscal = matriculeFiscal;
         this.taille_stock = 0;
@@ -35,6 +41,7 @@ public class Shop {
     {
         this.id = 1;
         this.id_vendeur=null;
+        this.sellerName="Pas de responsable";
         this.nom = nom;
         this.matricule_fiscal = matriculeFiscal;
         this.taille_stock = 0;
@@ -60,7 +67,7 @@ public class Shop {
 
     @Override
     public String toString() {
-        return nom +"  => ID : " + id +", Responsable: "+this.getId_vendeur()+ ", mattricule fiscal: " + matricule_fiscal;
+        return nom +"  => Nom : " + nom +", Responsable: "+this.getId_vendeur()+ ", mattricule fiscal: " + matricule_fiscal;
     }
 
     
@@ -113,6 +120,15 @@ public class Shop {
 
     public void setMatricule_fiscal(int matricule_fiscal) {
         this.matricule_fiscal = matricule_fiscal;
+    }
+
+    public String getSellerName() {
+        return ShopService.getInstance().getShopSellerName(this);
+    }
+
+    public void setSellerName(String sellerName) {
+        this.sellerName = sellerName;
+        
     }
 
     

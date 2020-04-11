@@ -67,7 +67,7 @@ public class Offer {
 
     @Override
     public String toString() {
-        return "Offer{" + "id=" + id + ", id_magasin=" + id_magasin + ", taux=" + taux + ", nom=" + nom + ", description=" + description + ", date_debut=" + date_debut + ", date_fin=" + date_fin + '}';
+        return "Offer{" +  " taux=" + taux + ", nom=" + nom + ", description=" + description + ", date_debut=" + date_debut + ", date_fin=" + date_fin + '}';
     }
     
             
