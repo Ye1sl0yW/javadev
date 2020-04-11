@@ -73,13 +73,13 @@ public class SellerInterfaceController implements Initializable {
             shopOverviewTotalOffersLabel.setText(String.valueOf(offerService.getAllOffersForOneShop(sessionShop).size())); 
         }
         shopOverviewStockSizeLabel.setText(String.valueOf(sessionShop.getTaille_stock()));
-        shopOverviewStockValueLabel.setText("WIP 2");
+        shopOverviewStockValueLabel.setText(String.valueOf(ShopService.getInstance().calculateMerchandiseValue(sessionShop))+" TND");
     }
 
     public void refreshStockValuesAction()
     {
         shopOverviewStockSizeLabel.setText(String.valueOf(ShopService.getInstance().calculateStock(sessionShop)));
-        
+        shopOverviewStockValueLabel.setText(String.valueOf(ShopService.getInstance().calculateMerchandiseValue(sessionShop))+" TND");
     }
 
 }

@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 import tn.shoppy.model.Offer;
+import tn.shoppy.model.Product;
 import tn.shoppy.model.Shop;
 import tn.shoppy.utils.ConnectionDB;
 
@@ -422,28 +423,37 @@ public class ShopService {
     }
 
     public int calculateStock(Shop shop){
-        int result = ProductService.getInstance().getAllProductsForOneShop(shop).size();
         
-        if (result != shop.getTaille_stock()) {
-            String query = "UPDATE Magasin SET taille_stock=? WHERE id=?";
-            try {
-                PreparedStatement pst = cn.prepareStatement(query);
-                pst.setInt(2, shop.getId());
-                pst.setInt(1, result);
-                pst.executeUpdate();
-                System.out.println("Update successful !");
-
-            } catch (SQLException ex) {
-                System.err.println(ex.getMessage());
-
+        int result = 0;
+        if (ProductService.getInstance().getAllProductsForOneShop(shop) != null) {
+            result = ProductService.getInstance().getAllProductsForOneShop(shop).size();
+            if (result != shop.getTaille_stock()) {
+                String query = "UPDATE Magasin SET taille_stock=? WHERE id=?";
+                try {
+                    PreparedStatement pst = cn.prepareStatement(query);
+                    pst.setInt(2, shop.getId());
+                    pst.setInt(1, result);
+                    pst.executeUpdate();
+                    System.out.println("Update successful !");
+                } catch (SQLException ex) {
+                    System.err.println(ex.getMessage());
+                }
             }
         }
-        
         return result;
     }
     
     public double calculateMerchandiseValue(Shop shop){
-        return 0;
+        List<Product> list = ProductService.getInstance().getAllProductsForOneShop(shop);
+        double totalValue = (double) 0;
+        if(list != null)
+        {
+            for (Product elem : list)
+            {
+                totalValue += elem.getPrix()*elem.getQuantite();
+            }
+        }
+        return totalValue;
     }
     
 }
