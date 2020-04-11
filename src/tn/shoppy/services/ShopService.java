@@ -365,5 +365,29 @@ public class ShopService {
             return null;
         }
     }
+    
+    public String getShopSellerName(Shop shop)
+    {
+        if (shop.getId_vendeur()==0)
+        {
+            return "Pas de responsable";
+        }
+        
+        String query = "SELECT NOM FROM USERS WHERE ID = "+shop.getId_vendeur()+";"; 
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) 
+            {
+                String r = rs.getString(1);
+                return r;
+            }
+        } 
+        catch (SQLException ex) 
+        {
+            System.err.println(ex.getMessage());
+        }
+        return "Error : Cannot find seller name.";
+    }
 
 }
