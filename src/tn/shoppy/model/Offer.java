@@ -92,6 +92,7 @@ public class Offer {
 
     public void setId_magasin(int id_magasin) {
         this.id_magasin = id_magasin;
+        this.setShopName(OfferService.getInstance().getShopName(this));
     }
 
     public double getTaux() {

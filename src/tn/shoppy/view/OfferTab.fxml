@@ -29,13 +29,12 @@
         </Pane>
         <TableView fx:id="offerTable" layoutY="53.0" onKeyPressed="#selectOneOfferAction" onMouseClicked="#clickOneShopAction" prefHeight="551.0" prefWidth="802.0">
             <columns>
-                <TableColumn fx:id="offerNameColumn" prefWidth="104.0" text="Nom" />
-                <TableColumn fx:id="offerShopColumn" prefWidth="105.0" text="Magasin offrant" />
-            <TableColumn fx:id="offerShopNameColumn" prefWidth="103.0" text="nom mag wip" />
-                <TableColumn fx:id="offerRateColumn" prefWidth="47.0" text="Taux" />
-                <TableColumn fx:id="offerDescriptionColumn" prefWidth="248.0" text="Description" />
+                <TableColumn fx:id="offerNameColumn" prefWidth="149.0" text="Nom" />
+            <TableColumn fx:id="offerShopNameColumn" prefWidth="111.0" text="Magasin offrant" />
+                <TableColumn fx:id="offerRateColumn" prefWidth="65.0" text="Taux" />
+                <TableColumn fx:id="offerDescriptionColumn" prefWidth="265.0" text="Description" />
                 <TableColumn fx:id="offerStartDateColumn" minWidth="0.0" prefWidth="108.0" text="Début" />
-                <TableColumn fx:id="offerEndDateColumn" prefWidth="101.0" text="Fin" />
+                <TableColumn fx:id="offerEndDateColumn" prefWidth="103.0" text="Fin" />
             </columns>
         </TableView>
         <VBox layoutX="811.0" layoutY="51.0" prefHeight="499.0" prefWidth="245.0">
