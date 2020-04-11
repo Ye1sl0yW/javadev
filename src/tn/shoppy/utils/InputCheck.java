@@ -80,7 +80,7 @@ public class InputCheck {
      */
     public boolean testFutureDate(Date date)
     {
-        return (date.compareTo(new Date(System.currentTimeMillis())) <= 0 );
+        return (date.compareTo(new Date(System.currentTimeMillis())) >= 0 );
     }
     
     /**

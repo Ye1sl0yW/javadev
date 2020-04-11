@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import static tn.shoppy.controller.ShopController.sessionShop;
 import tn.shoppy.model.Shop;
+import tn.shoppy.services.OfferService;
 import tn.shoppy.services.ShopService;
 import tn.shoppy.utils.ConnectionDB;
 
@@ -41,11 +42,16 @@ public class SellerInterfaceController implements Initializable {
     @FXML
     Label shopOverviewTotalOffersLabel;
     //--------
+    @FXML
+    Label shopOverviewStockSizeLabel;
+    @FXML
+    Label shopOverviewStockValueLabel;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 //        System.out.println(sessionShop);
         ShopService shopService = ShopService.getInstance();
+        OfferService offerService = OfferService.getInstance();
         
 //        Setting the controller for the offer tab ( unused)
         FXMLLoader offerLoader = new FXMLLoader(getClass().getResource("/tn/shoppy/view/SellerInterface/OfferTab.fxml"));
@@ -60,7 +66,20 @@ public class SellerInterfaceController implements Initializable {
 //        Initializing GUI elements
         shopOverviewShopNameLabel.setText(sessionShop.getNom());
         shopOverviewSellerNameLabel.setText(shopService.getShopSellerName(sessionShop));
+        if(offerService.getAllOffersForOneShop(sessionShop)!=null){
+            shopOverviewCurrentOffersLabel.setText(String.valueOf(shopService.getNumberOfCurrentOffersForOneShop(sessionShop)));               
+            shopOverviewPlannedOffersLabel.setText(String.valueOf(shopService.getNumberOfPlannedOffersForOneShop(sessionShop)));
+            shopOverviewExpiredOffersLabel.setText(String.valueOf(shopService.getNumberOfExpiredOffersForOneShop(sessionShop)));
+            shopOverviewTotalOffersLabel.setText(String.valueOf(offerService.getAllOffersForOneShop(sessionShop).size())); 
+        }
+        shopOverviewStockSizeLabel.setText(String.valueOf(sessionShop.getTaille_stock()));
+        shopOverviewStockValueLabel.setText("WIP 2");
     }
 
+    public void refreshStockValuesAction()
+    {
+        shopOverviewStockSizeLabel.setText(String.valueOf(ShopService.getInstance().calculateStock(sessionShop)));
+        
+    }
 
 }

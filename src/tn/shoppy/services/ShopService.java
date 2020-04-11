@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
+import tn.shoppy.model.Offer;
 import tn.shoppy.model.Shop;
 import tn.shoppy.utils.ConnectionDB;
 
@@ -389,5 +390,60 @@ public class ShopService {
         }
         return "Error : Cannot find seller name.";
     }
+    
+    public int getNumberOfCurrentOffersForOneShop(Shop shop)
+    {
+        OfferService os = OfferService.getInstance();
+        if (os.getCurrentOffersForOneShop(shop)!= null)
+        {
+            return os.getCurrentOffersForOneShop(shop).size();
+        }
+        return 0;
+    }
 
+    public int getNumberOfExpiredOffersForOneShop(Shop shop)
+    {
+        OfferService os = OfferService.getInstance();
+        if (os.getExpiredOffersForOneShop(shop)!= null)
+        {
+            return os.getExpiredOffersForOneShop(shop).size();
+        }
+        return 0;
+    }
+
+    public int getNumberOfPlannedOffersForOneShop(Shop shop)
+    {
+        OfferService os = OfferService.getInstance();
+        if (os.getPlannedOffersForOneShop(shop)!= null)
+        {
+            return os.getPlannedOffersForOneShop(shop).size();
+        }
+        return 0;
+    }
+
+    public int calculateStock(Shop shop){
+        int result = ProductService.getInstance().getAllProductsForOneShop(shop).size();
+        
+        if (result != shop.getTaille_stock()) {
+            String query = "UPDATE Magasin SET taille_stock=? WHERE id=?";
+            try {
+                PreparedStatement pst = cn.prepareStatement(query);
+                pst.setInt(2, shop.getId());
+                pst.setInt(1, result);
+                pst.executeUpdate();
+                System.out.println("Update successful !");
+
+            } catch (SQLException ex) {
+                System.err.println(ex.getMessage());
+
+            }
+        }
+        
+        return result;
+    }
+    
+    public double calculateMerchandiseValue(Shop shop){
+        return 0;
+    }
+    
 }
