@@ -2,9 +2,13 @@ package tn.shoppy.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Tab;
 import javafx.scene.layout.AnchorPane;
+import tn.shoppy.services.Pdf;
 
 /**
  * This controller class is used to control the whole dashboard window. 
@@ -15,6 +19,9 @@ import javafx.scene.layout.AnchorPane;
  */
 public class DashboardController implements Initializable {
 
+    @FXML
+    private Tab tab_product;
+
     /**
      * UI attributes
      */
@@ -24,5 +31,16 @@ public class DashboardController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+
+
+    @FXML
+    private void pdf_btn(ActionEvent event) {
+                if (tab_product.isSelected()) {
+            Pdf.PdfListeProduits();
+
+    
+    }
+    
+}
 
 }

@@ -1,5 +1,6 @@
 package tn.shoppy.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
@@ -7,11 +8,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -24,8 +33,12 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
+import tn.shoppy.model.Category;
 import tn.shoppy.model.Product;
 import tn.shoppy.model.Shop;
+import tn.shoppy.services.CategoryService;
+import tn.shoppy.services.Pdf;
 import tn.shoppy.services.ProductService;
 import tn.shoppy.services.ShopService;
 import tn.shoppy.utils.ConnectionDB;
@@ -35,17 +48,16 @@ import tn.shoppy.utils.InputCheck;
  *
  * @author anas fattoum
  */
-public class ProductController implements Initializable{
-    
+public class ProductController implements Initializable {
+
     Connection cnx = ConnectionDB.getCnx();
-    
+    public static Product prod;
+
     /**
      * UI elements
      */
     @FXML
     private TableView<Product> productTable;
-    @FXML
-    private TableColumn<Product, Integer> productIdColumn;
     @FXML
     private TableColumn<Product, String> productNameColumn;
     @FXML
@@ -63,7 +75,6 @@ public class ProductController implements Initializable{
     @FXML
     private TableColumn<Product, Date> productUpdatedAtColumn;
 
-    
     @FXML
     private TextField addProductNameField;
     @FXML
@@ -76,7 +87,9 @@ public class ProductController implements Initializable{
     private TextArea addProductDescriptionArea;
     @FXML
     private ComboBox<Shop> addProductShopComboBox;
-    
+    @FXML
+    private ComboBox<Category> addProductCategoryComboBox;
+
     @FXML
     private TextField updateProductNameField;
     @FXML
@@ -89,11 +102,15 @@ public class ProductController implements Initializable{
     private TextArea updateProductDescriptionArea;
     @FXML
     private ComboBox<Shop> updateProductShopComboBox;
-    
+    @FXML
+    private ComboBox<Category> updateProductCategoryComboBox;
+
     @FXML
     private Label searchProductLabel;
+
     private ObservableList<Product> productData = FXCollections.observableArrayList();
     private ObservableList<Shop> shopData = FXCollections.observableArrayList();
+    private ObservableList<Category> categoryData = FXCollections.observableArrayList();
 
     @FXML
     private TextField searchProductField;
@@ -101,7 +118,20 @@ public class ProductController implements Initializable{
     @FXML
     private ImageView productHelpImage;
     private Tooltip helpTooltip;
-    
+    @FXML
+    private Button searchProductButton;
+    @FXML
+    private Button updateProductButton;
+    @FXML
+    private Button addProductButton;
+
+    @FXML
+    private Button deleteProductAction;
+    @FXML
+    private Button pdf_btn;
+    @FXML
+    private Button btstat;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         productTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -112,7 +142,6 @@ public class ProductController implements Initializable{
         productData.clear();
         if (productList != null) {
             productData.addAll(productList);
-            productIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
             productNameColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
             productShopColumn.setCellValueFactory(new PropertyValueFactory<>("id_magasin"));
             productBrandColumn.setCellValueFactory(new PropertyValueFactory<>("marque"));
@@ -121,8 +150,6 @@ public class ProductController implements Initializable{
             productPriceColumn.setCellValueFactory(new PropertyValueFactory<>("prix"));
             productCategoriesColumn.setCellValueFactory(new PropertyValueFactory<>("categoriesString"));
             productUpdatedAtColumn.setCellValueFactory(new PropertyValueFactory<>("updated_at"));
-            
-           
 
             productTable.setItems(productData);
             searchProductLabel.setText("Résultat : " + productList.size() + " ligne(s).");
@@ -130,15 +157,24 @@ public class ProductController implements Initializable{
             searchProductLabel.setText("Aucun résultat.");
             productTable.setPlaceholder(new Label("Il n'y a aucun produit dans la base de données. Veuillez en rajouter! "));
         }
-        
+
         List<Shop> shopList = new ArrayList<>();
         ShopService shopService = ShopService.getInstance();
-        shopList = shopService.getAllShops();    
+        shopList = shopService.getAllShops();
         shopData.clear();
         if (shopList != null) {
             shopData.addAll(shopList);
             addProductShopComboBox.getItems().addAll(shopData);
             updateProductShopComboBox.getItems().addAll(shopData);
+        }
+
+        List<Category> categoryList = new ArrayList<>();
+        categoryList = CategoryService.getInstance().getAllCategory();
+        categoryData.clear();
+        if (categoryList != null) {
+            categoryData.addAll(categoryList);
+            addProductCategoryComboBox.getItems().addAll(categoryData);
+            updateProductCategoryComboBox.getItems().addAll(categoryData);
         }
 
         helpTooltip = new Tooltip("Vous êtes dans l'onglet de getion des produits.\n"
@@ -151,13 +187,13 @@ public class ProductController implements Initializable{
         Tooltip.install(productHelpImage, helpTooltip);
     }
 
-    
-     //********************* C **************************//
+    //********************* C **************************//
     @FXML
     public void addProductAction() throws SQLException {
         ProductService productService = ProductService.getInstance();
         InputCheck inputCheck = InputCheck.getInstance();
         int shopID = 2;
+        int categoryID = 0; 
         String name = addProductNameField.getText();
         String quantity = addProductQuantityField.getText();
         String description = addProductDescriptionArea.getText();
@@ -167,19 +203,18 @@ public class ProductController implements Initializable{
         boolean result = false;
 
         if (inputCheck.testTextInput(name) && inputCheck.testDoubleInput(price)
-                && (inputCheck.testNumberInput(quantity)) && inputCheck.testTextInput(brand) ) {
+                && (inputCheck.testNumberInput(quantity)) && inputCheck.testTextInput(brand)
+                && (addProductCategoryComboBox.getValue() != null) ) {
             Double priceDouble = Double.parseDouble(price);
             Integer quantityInt = Integer.parseInt(quantity);
-            if(addProductShopComboBox.getValue()!= null)
-            {
-                shopID = addProductShopComboBox.getValue().getId();
-            }
-            Product p = new Product(0,shopID,name,quantityInt,description,priceDouble,brand);
+            
+            shopID = addProductShopComboBox.getValue().getId();
+            categoryID = addProductCategoryComboBox.getValue().getId();
+            Product p = new Product(0, shopID, name, quantityInt, description, priceDouble, brand);
+            p.getCategoriesID().add(categoryID);
             System.out.println(p);
-            result = productService.addProduct(p) ;
-        } 
-        else 
-        {
+            result = productService.addProduct(p);
+        } else {
             System.out.println("WIP : Error dialog => Wrong input format !");
         }
         if (result) {
@@ -192,8 +227,7 @@ public class ProductController implements Initializable{
         }
 
     }
-    
-    
+
     //********************* R **************************//
     public void refreshTableData() {
         List<Product> productList = new ArrayList<>();
@@ -209,92 +243,87 @@ public class ProductController implements Initializable{
             productTable.setPlaceholder(new Label("Il n'y a aucun produit dans la base de données. Veuillez en rajouter! "));
         }
     }
-    
-     //********************* U **************************//
+
+    //********************* U **************************//
     @FXML
     public void selectOneProductAction(KeyEvent keyEvent) {
         Product product = (Product) productTable.getSelectionModel().getSelectedItem();
-        if(product != null)
-        {
+        if (product != null) {
             fillUpdateForm(product);
         }
     }
+
     @FXML
     public void clickOneProductAction() {
         Product product = (Product) productTable.getSelectionModel().getSelectedItem();
-        if(product != null)
-        {
+        if (product != null) {
             fillUpdateForm(product);
         }
     }
-    
-    public void fillUpdateForm(Product product)
-    {
-        ShopService shopService= ShopService.getInstance();
+
+    public void fillUpdateForm(Product product) {
+        ShopService shopService = ShopService.getInstance();
+        CategoryService categoryService = CategoryService.getInstance();
         
         updateProductNameField.setText(product.getNom());
         updateProductQuantityField.setText(String.valueOf(product.getQuantite()));
         updateProductDescriptionArea.setText(product.getDescription());
         updateProductPriceField.setText(String.valueOf(product.getPrix()));
         updateProductBrandField.setText(product.getMarque());
-        updateProductShopComboBox.setValue(shopService.findOneShopByID(product.getId_magasin()));    
-        
+        updateProductShopComboBox.setValue(shopService.findOneShopByID(product.getId_magasin()));
+        if (!product.getCategoriesID().isEmpty())
+        {
+            updateProductCategoryComboBox.setValue(categoryService.findOneCategoryByID(product.getCategoriesID().get(0)));
+        } else {
+            updateProductCategoryComboBox.setValue(null);
+        }
     }
-    
     @FXML
     public void updateProductAction() {
         Product selection = productTable.getSelectionModel().getSelectedItem();
         InputCheck inputCheck = InputCheck.getInstance();
-        if (selection != null)
-        {   
+        if (selection != null) {
             Product product = new Product();
             product.setId(selection.getId());
             String newName = updateProductNameField.getText();
-            String newQuantity = updateProductQuantityField.getText();  
+            String newQuantity = updateProductQuantityField.getText();
             String newDescription = updateProductDescriptionArea.getText();
-            String newPrice = updateProductPriceField.getText();  
-            String newBrand = updateProductBrandField.getText();  
+            String newPrice = updateProductPriceField.getText();
+            String newBrand = updateProductBrandField.getText();
             int newShopID = updateProductShopComboBox.getValue().getId();
-            
-            Alert a=new Alert(Alert.AlertType.CONFIRMATION,"Êtes-vous sûr(e) de vouloir modifier le produit: "+selection.getNom()+" de la base de données ?",ButtonType.YES,ButtonType.NO);
+//            int categoryID = 0;
+
+            Alert a = new Alert(Alert.AlertType.CONFIRMATION, "Êtes-vous sûr(e) de vouloir modifier le produit: " + selection.getNom() + " de la base de données ?", ButtonType.YES, ButtonType.NO);
             a.showAndWait();
-            
-            if(a.getResult()==ButtonType.YES){
+
+            if (a.getResult() == ButtonType.YES) {
                 if (inputCheck.testTextInput(newName) && inputCheck.testDoubleInput(newPrice)
-                && (inputCheck.testNumberInput(newQuantity)) && inputCheck.testTextInput(newBrand) ) 
-       
-                {
+                        && (inputCheck.testNumberInput(newQuantity)) && inputCheck.testTextInput(newBrand) && (updateProductCategoryComboBox.getValue() != null)){
                     product.setNom(newName);
                     product.setQuantite(Integer.parseInt(newQuantity));
                     product.setDescription(newDescription);
                     product.setPrix(Double.parseDouble(newPrice));
                     product.setId_magasin(newShopID);
                     product.setUpdated_at(new java.sql.Date(System.currentTimeMillis()));
-
-                    
+                    product.getCategoriesID().add(updateProductCategoryComboBox.getValue().getId());
                     ProductService productService = ProductService.getInstance();
                     productService.updateProduct(product);
                     refreshTableData();
                     a.close();
-                }
-                else
-                {
-                    Alert inputAlert = new Alert(Alert.AlertType.ERROR,"Le format de données saisi est incorrect.",ButtonType.OK);
+                } else {
+                    Alert inputAlert = new Alert(Alert.AlertType.ERROR, "Le format de données saisi est incorrect.", ButtonType.OK);
                     inputAlert.showAndWait();
                 }
-            }else{
-            a.close();
+            } else {
+                a.close();
             }
-        }
-        else
-        {   
-            Alert a=new Alert(Alert.AlertType.WARNING,"Aucune séléction !",ButtonType.CLOSE); 
+        } else {
+            Alert a = new Alert(Alert.AlertType.WARNING, "Aucune séléction !", ButtonType.CLOSE);
             a.showAndWait();
         }
         refreshTableData();
-    }    
-    
-    
+    }
+
     //********************* D **************************//
     @FXML
     public void deleteProductAction() {
@@ -313,43 +342,81 @@ public class ProductController implements Initializable{
             a.close();
         }
     }
-    
-        //************ SEARCH *********************//
-    
-     public void searchProductAction() {
+
+    //************ SEARCH *********************//
+    @FXML
+    public void searchProductAction() {
         List<Product> resultList = new ArrayList<>();
         ProductService productService = ProductService.getInstance();
         String input = searchProductField.getText();
-        if(input.length()>0)
-        {
+        if (input.length() > 0) {
             resultList = productService.findProductByNameOrDescription(input);
             productData.clear();
             productData.addAll(resultList);
-            productTable.setItems(productData);   
-            searchProductLabel.setText("Résultat : "+resultList.size()+" ligne(s).");
-        }
-        else
-        {
+            productTable.setItems(productData);
+            searchProductLabel.setText("Résultat : " + resultList.size() + " ligne(s).");
+        } else {
             refreshTableData();
         }
     }
-     
-     public void typingSearchProductAction() {
+
+    @FXML
+    public void typingSearchProductAction(KeyEvent event) {
         List<Product> resultList = new ArrayList<>();
         ProductService productService = ProductService.getInstance();
         String input = searchProductField.getText();
-        if(input.length()>0)
-        {
+        if (input.length() > 0) {
             resultList = productService.findProductByNameOrDescription(input);
             productData.clear();
             productData.addAll(resultList);
-            searchProductLabel.setText("Résultat : "+resultList.size()+" ligne(s).");
-            productTable.setItems(productData);   
-        }
-        else
-        {
+            productTable.setItems(productData);
+            searchProductLabel.setText("Résultat : " + resultList.size() + " ligne(s).");
+
+        } else {
             refreshTableData();
         }
     }
-    
+
+    @FXML
+    public void detailPAction() {
+        System.out.println("tn.shoppy.controller.ProductController.DetailProductAction()");
+        prod = productTable.getSelectionModel().getSelectedItem();
+
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/tn/shoppy/view/Detail.fxml"));
+            Stage myWindow = (Stage) productTable.getScene().getWindow();
+            Scene sc = new Scene(root);
+            myWindow.setScene(sc);
+            myWindow.setTitle("Détail produit");
+            myWindow.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ProductController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    @FXML
+    private void pdf_btn(ActionEvent event) {
+        if (!(productTable.getItems().isEmpty())) {
+            Pdf.PdfListeProduits();
+            System.out.println("Print to pdf done");
+
+        }
+
+    }
+
+    @FXML
+    public void btstat(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/tn/shoppy/view/statE.fxml"));
+            Scene scene = new Scene(root);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+            window.show();
+ 
+        } catch (IOException ex) {
+        }
+    }
+
 }

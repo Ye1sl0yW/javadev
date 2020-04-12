@@ -27,7 +27,7 @@
                 <Tab closable="false" text="Gestion des magasins">
                     <fx:include fx:id="shopTab" source="ShopTab.fxml" />
                 </Tab>
-                <Tab closable="false" text="Gestion des produits">
+                <Tab fx:id="tab_product" closable="false" text="Gestion des produits">
                     <fx:include fx:id="productTab" source="ProductTab.fxml" />
                 </Tab>
                 <Tab closable="false" disable="false" text="Gestion des offres">
