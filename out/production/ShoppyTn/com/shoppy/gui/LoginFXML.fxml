@@ -21,7 +21,7 @@
          </font></JFXTextField>
       <ImageView fitHeight="115.0" fitWidth="107.0" layoutX="170.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true" styleClass="logo">
          <image>
-            <Image url="@ECOSMART.png" />
+            <Image url="@SHOPPY.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="26.0" fitWidth="32.0" layoutX="93.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">

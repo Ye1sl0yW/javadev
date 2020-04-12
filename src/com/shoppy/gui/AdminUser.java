@@ -7,7 +7,6 @@ import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import com.shoppy.entities.FosUser;
 import com.shoppy.services.FosUserServices;
-import hamdigtar.crudAccount.AccountService;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -46,6 +45,9 @@ public class AdminUser implements Initializable{
     private TreeTableColumn<Account, String> genderCol;
 
     @FXML
+    private TreeTableColumn<Account, String> emailCol;
+
+    @FXML
     private JFXTextField searchTF;
 
     @FXML
@@ -70,6 +72,7 @@ public class AdminUser implements Initializable{
     private Label nameLB;
 
     ObservableList<Account> list;
+
 
     ObservableList<FosUser> accountList;
 
@@ -100,6 +103,7 @@ public class AdminUser implements Initializable{
             public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Account, String> param) {
                 return param.getValue().getValue().age;
             }
+
         });
 
 
@@ -110,6 +114,13 @@ public class AdminUser implements Initializable{
             }
         });
 
+        emailCol.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Account, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Account, String> param) {
+                return param.getValue().getValue().email;
+            }
+        });
+
 
         list= FXCollections.observableArrayList();
 
@@ -117,26 +128,28 @@ public class AdminUser implements Initializable{
         treeTableView.setRoot(root);
         treeTableView.setShowRoot(false);
 
- //       list.addAll(new Account("adel","vendor","22","Male"));
- //       list.addAll(new Account("Salam","client","32","Female"));
-        list.addAll(new Account("Jack","admin","42","Male"));
+        list.addAll(new Account("admin","admin","hamdi.gtari@esprit.tn","Male"));
+        list.addAll(new Account("client","client","hamdigtari@yahoo.com","Female"));
+        list.addAll(new Account("client2","client","hamdi.gtari@yahoo.com","Homme"));
+        list.addAll(new Account("client3","client","shoppy@yopmail.com","Homme"));
+        list.addAll(new Account("client4","client","shoppy2@yopmail.com","Homme"));
 
 
         FosUserServices fs = new FosUserServices();
 
-        AccountService productService = AccountService.getInstance();
+ /*      AccountService productService = AccountService.getInstance();
         accountList = fs.findAll();
 
         if (accountList != null) {
 
             for (FosUser acc : accountList) {
 
-                list.addAll(new Account(acc.getFirstname()+" "+acc.getLastname(),fs.CheckRole(acc),acc.getEmail(),"Male"));
+                list.addAll(new Account(acc.getId(),acc.getUsername(),fs.CheckRole(acc),acc.getEmail(),acc.getGender()));
             }
 
 
         }
-
+*/
         searchTF.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {

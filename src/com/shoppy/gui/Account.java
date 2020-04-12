@@ -14,11 +14,12 @@ public class Account extends RecursiveTreeObject<Account> {
     StringProperty gender;
     StringProperty username;
 
-    public Account(int id, StringProperty username, StringProperty email, StringProperty password) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
+    public Account(int id, String username, String role, String email, String gender) {
+        this.username = new SimpleStringProperty(username);
+        this.job = new SimpleStringProperty(role);
+        this.email = new SimpleStringProperty(email);
         this.id=id;
+        this.gender= new SimpleStringProperty(gender);
     }
 
     StringProperty email;
@@ -46,7 +47,7 @@ public class Account extends RecursiveTreeObject<Account> {
         this.gender=new SimpleStringProperty(gender);
     }
 
-    public Account() {
+    public Account(String s, String checkRole, String email, String username, String male) {
 
     }
 

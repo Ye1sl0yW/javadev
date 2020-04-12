@@ -46,6 +46,7 @@ public class ConfirmAccountFXMLController implements Initializable {
 
     @FXML
     private void ConfirmAccount(ActionEvent event) throws IOException {
+        lbconf.setText("");
         FosUser u = new FosUser();
         u.setEmail(tfemail.getText());
         FosUserServices us = new FosUserServices();
@@ -55,7 +56,7 @@ public class ConfirmAccountFXMLController implements Initializable {
             lbconf.setTextFill(Paint.valueOf("#0000FF"));
             lbconf.setText("Compte validé");
 
-            Parent home_page_parent = FXMLLoader.load(getClass().getResource("LoginFXML.fxml"));
+            Parent home_page_parent = FXMLLoader.load(getClass().getResource("LoginFXMLv2.fxml"));
             Scene home_page_scene = new Scene(home_page_parent);
             Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             app_stage.hide(); //optional
