@@ -2,9 +2,12 @@ package tn.shoppy.controller.SellerInterface;
 
 import java.awt.event.ActionEvent;
 import java.lang.reflect.InvocationTargetException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,6 +22,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.transform.Scale;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import static tn.shoppy.controller.ShopController.sessionShop;
 import tn.shoppy.model.Shop;
@@ -67,6 +72,9 @@ public class SellerInterfaceController implements Initializable {
     @FXML
     Button shopOverviewCalculateStockValuesButton;
     
+    @FXML
+    WebView sellerWebView;
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 //        System.out.println(sessionShop);
@@ -94,6 +102,14 @@ public class SellerInterfaceController implements Initializable {
         }
         shopOverviewStockSizeLabel.setText(String.valueOf(sessionShop.getTaille_stock()));
         shopOverviewStockValueLabel.setText(String.valueOf(ShopService.getInstance().calculateMerchandiseValue(sessionShop))+" TND");
+        
+        
+        WebEngine webEngine = sellerWebView.getEngine();
+//        webEngine.load("http://google.com");
+//        webEngine.load("http://localhost/validation_finale/pi_dev_2020/web/app_dev.php/");
+        URL url = this.getClass().getResource("/tn/shoppy/services/CurrencyConverter.html");
+        webEngine.load(url.toString());
+
     }
 
     public void refreshStockValuesAction()
@@ -107,11 +123,13 @@ public class SellerInterfaceController implements Initializable {
                 //Node.setVisible(boolean)
         sellerExportToPDFButton.setVisible(false);
         shopOverviewCalculateStockValuesButton.setVisible(false);
-                
+        sellerWebView.setVisible(false);    
+        
         NodeToPDFExport.printNode(sellerOverviewPane);
         
         shopOverviewCalculateStockValuesButton.setVisible(true);
         sellerExportToPDFButton.setVisible(true);
+        sellerWebView.setVisible(true);
     }
     
 
