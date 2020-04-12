@@ -246,5 +246,9 @@ public class ShopService {
         }
     }
 
+         public Shop findOneShopByID(int id )
+         {
+             return null;
+         }
 
 }

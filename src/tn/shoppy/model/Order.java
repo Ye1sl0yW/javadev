@@ -135,6 +135,7 @@ private String  adresseLiv;
     }
        public int getId_Acheteur() {
         return id_Acheteur;
+        
     }
 
     public void setId_Acheteur(int id_Acheteur) {

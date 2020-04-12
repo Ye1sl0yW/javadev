@@ -32,8 +32,8 @@ public class OrderStat {
             ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
            rs.next() ; 
     
-                pieChartData.add(new PieChart.Data("total_cmd_sup : %"+String.valueOf(100* Float.valueOf(rs.getInt(1))/Float.valueOf(rs.getInt(1)+rs.getInt(2))), rs.getInt(1)));
-                 pieChartData.add(new PieChart.Data("total_cmd_inf : %"+String.valueOf(100* Float.valueOf(rs.getInt(2))/Float.valueOf(rs.getInt(1)+rs.getInt(2))), rs.getInt(2)));
+                pieChartData.add(new PieChart.Data("factures >= 500dt : %"+String.valueOf(100* Float.valueOf(rs.getInt(1))/Float.valueOf(rs.getInt(1)+rs.getInt(2))), rs.getInt(1)));
+                 pieChartData.add(new PieChart.Data("factures < 500dt : %"+String.valueOf(100* Float.valueOf(rs.getInt(2))/Float.valueOf(rs.getInt(1)+rs.getInt(2))), rs.getInt(2)));
 
             
 

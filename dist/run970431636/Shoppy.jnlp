@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="Shoppy.jnlp">
+  <information>
+    <title>Shoppy</title>
+    <vendor>Haroun</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="Shoppy.jar" size="2329754" download="eager" />
+    <jar href="lib\activation.jar" size="55147" download="eager" />
+    <jar href="lib\itextpdf-5.1.0.jar" size="1614453" download="eager" />
+    <jar href="lib\itextpdf-5.4.1.jar" size="1898417" download="eager" />
+    <jar href="lib\jfoenix-8.0.8.jar" size="2708772" download="eager" />
+    <jar href="lib\mail.jar" size="521000" download="eager" />
+    <jar href="lib\mysql-connector-java-8.0.19.jar" size="2356711" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Shoppy" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="tn.shoppy.core.Main"  name="Shoppy" />
+  <update check="always"/>
+</jnlp>

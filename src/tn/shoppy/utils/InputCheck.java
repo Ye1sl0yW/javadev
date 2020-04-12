@@ -30,7 +30,7 @@ public class InputCheck {
  
     public boolean testTextInput(String a) {
         try{
-            if (a.length() == 0 || testNumberInput(a) || testFloatInput(a)) 
+            if (a.length() == 0 || testNumberInput(a) || testFloatInput(a) || a.contains("@")) 
             {
                 return false;
             }
@@ -41,7 +41,7 @@ public class InputCheck {
         }
         return true;
     }
-
+   
     public boolean testNumberInput(String a) {
         return (a.matches("^[0-9]*") && a.length()>0);
     }
@@ -56,5 +56,9 @@ public class InputCheck {
         {
             return false;
         }
+    }
+
+    public boolean testDoubleInput(String newPrice) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

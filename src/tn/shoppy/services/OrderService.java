@@ -20,6 +20,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 import tn.shoppy.model.Order;
+import tn.shoppy.model.Product;
 import tn.shoppy.model.Shop;
 import tn.shoppy.utils.ConnectionDB;
 
@@ -327,5 +328,133 @@ public List<Order> findOrdersByQte(String qt) {
         }       
         return false;
     }
+public ArrayList<Product> rechercherNomEt(String rech) throws SQLException {
 
+        ArrayList<Product> off = new ArrayList<>();
+           Product e = null;
+        String req = "SELECT `id`,`nom`,`quantite`,`prix`,`marque` FROM produit where nom Like '%"+rech+"%' ";  
+         
+        Statement stm = cn.createStatement();
+        ResultSet rst = stm.executeQuery(req);
+        
+
+        while (rst.next()) {
+                              e = new Product();
+                
+              
+                e.setId(rst.getInt("id"));
+               
+                e.setMarque(rst.getString("marque"));
+                e.setNom(rst.getString("nom"));
+                e.setQuantite(rst.getInt("quantite"));
+                e.setPrix(rst.getDouble("prix"));
+                
+                   if (findAllCategoriesByProductID(rst.getInt(1)) != null)
+                {
+                    e.getCategoriesID().addAll(findAllCategoriesByProductID(rst.getInt(1)));
+                    e.setCategoriesString(getAllCategoriesAsString(rst.getInt(1)));
+                }
+                
+                
+                      
+   Product per = new Product(rst.getInt(1),rst.getString(2),rst.getInt(3),rst.getFloat(4),rst.getString(5));
+  
+
+            off.add(e);
+        }
+        return off;
+    } 
+ public String getAllCategoriesAsString(int id)
+    {
+        List<Integer> list = new ArrayList<>();
+        list = findAllCategoriesByProductID(id);
+        String result= "";
+        for (int elem : list){
+            CategoryService cs = CategoryService.getInstance();
+            result += cs.findCategoryNameByID(elem) +"  ";  
+        }
+        return result;
+    }
+       
+ public List<Integer> findAllCategoriesByProductID(int id)
+    {
+        List<Integer> result = new ArrayList<>();
+        int count = 0;
+        String query = "SELECT * FROM produit_categorie WHERE produit_id=" + id + " ;";
+         try{
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()){
+                
+                Integer r = null;
+                r=rs.getInt(2);
+                
+               
+                result.add(r);
+                count++;
+            }
+            if(count == 0)
+            {
+                return null;
+            }
+            else
+            {
+               return result;
+            }
+        }
+        catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            return null;
+        }
+    }
+  public List<Product> getAllProducts() 
+    {
+        List<Product> list = new ArrayList<>();
+        int count = 0;
+        
+        String query="select * from produit ";
+     
+        
+        try{
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()){
+                
+                Product r = new Product();
+                r.setId(rs.getInt(1));
+                r.setId_magasin(rs.getInt(2));
+                r.setNom(rs.getString(4));
+                r.setQuantite(rs.getInt(3));
+              r.setDescription(rs.getString(5));
+                r.setPrix(rs.getDouble(6));
+                r.setMarque(rs.getString(7));
+                if (findAllCategoriesByProductID(rs.getInt(1)) != null){
+                    r.getCategoriesID().addAll(findAllCategoriesByProductID(rs.getInt(1)));
+                    r.setCategoriesString(getAllCategoriesAsString(rs.getInt(1)));
+//                        String query1="select nom from magasin where id= "+r.getId_magasin()+" ;" ;
+//                       Statement st1 = cn.createStatement();
+//                       ResultSet rs1 = st1.executeQuery(query1);
+//             while (rs1.next()){
+//                
+//                }
+                }
+                
+                list.add(r);
+                count++;
+            }
+            if(count == 0)
+            {
+                return null;
+            }
+            else
+            {
+               return list;
+            }
+        }
+        catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            return null;
+        }
+    }
+  
 }

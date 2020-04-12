@@ -13,7 +13,7 @@ import java.util.List;
  * @author asus
  */
 public class Cart {
-       private int orderNum;
+       private int orderNum=1;
  
     private int  customerInfo=1;
  

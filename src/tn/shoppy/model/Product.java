@@ -43,6 +43,21 @@ public class Product {
         categoriesString = "Pas de catégorie.";
     }
 
+    public Product(String text, String text0, int i, int parseInt, Object object, Object object0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+      public Product(int id,String nom, int quantite,double prix, String marque) {
+        this.id = id;
+       // this.id_magasin = id_magasin;
+        this.nom = nom;
+         this.quantite = quantite;
+        //this.description = description;
+        this.prix = prix;
+        this.marque = marque;
+        
+    }
+
 
     /**
      * Methods 

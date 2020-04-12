@@ -5,20 +5,26 @@
  */
 package tn.shoppy.model;
 
+import javafx.beans.property.StringProperty;
+
 /**
  *
  * @author asus
  */
 public class CartLine {
      
-
+   private StringProperty ProductName;
     private Product productInfo;
     private int quantity;
   
     public CartLine() {
         this.quantity = 0;
     }
-  
+   public StringProperty ProductNameProperty() {
+        
+
+  return ProductName;
+ }
     public Product getProduct() {
         return productInfo;
     }
