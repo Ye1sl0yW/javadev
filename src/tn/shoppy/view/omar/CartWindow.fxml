@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="parent" prefHeight="626.0" prefWidth="805.0" styleClass="pane" stylesheets="@../assets/userwindow.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.shoppy.controller.CartWindowController">
+  <children>
+                  <Pane prefHeight="51.0" prefWidth="800.0">
+            <children>
+                <TextField fx:id="searchProductField" layoutX="14.0" layoutY="10.0" onKeyPressed="#Rechercher" prefHeight="31.0" prefWidth="194.0" promptText="Trouver un produit.." />
+    <Label fx:id="searchProductLabel" layoutX="292.0" layoutY="15.0" text="Aucun produit ne correspond à votre recherche." />             
+                <Button fx:id="searchProductButton" layoutX="221.0" layoutY="12.0" mnemonicParsing="false" onAction="#refreshTableData" text="refresh" />
+            <TextField fx:id="magasin" layoutX="624.0" layoutY="13.0" prefHeight="25.0" prefWidth="120.0" />
+            <Label layoutX="558.0" layoutY="15.0" prefHeight="17.0" prefWidth="53.0" text="Magasin" />
+<!--                <TextField fx:id="searchProductField" layoutX="14.0" layoutY="10.0" prefHeight="31.0" prefWidth="315.0" onKeyTyped="#typingSearchProductAction" promptText="Trouver un produit.." />-->
+            </children>
+        </Pane>
+        <TableView fx:id="productTable" layoutY="54.0" onKeyPressed="#selectOneProductAction" onMouseClicked="#clickOneProductAction" prefHeight="551.0" prefWidth="543.0">
+            <columns>
+            
+            <TableColumn fx:id="productNameColumn" prefWidth="96.66668701171875" text="Nom" />
+          
+            <TableColumn fx:id="productBrandColumn" prefWidth="101" text="Marque" />
+ 
+            <TableColumn fx:id="productPriceColumn" prefWidth="75.0" text="Prix" />
+            <TableColumn fx:id="productCategoriesColumn" prefWidth="102.0" text="Catégories" />
+           
+              <TableColumn fx:id="productShopColumn" prefWidth="100" text="ID Magasin" />
+        
+            <TableColumn fx:id="productQuantityColumn" prefWidth="65.0" text="Quantité" />
+            </columns>
+        </TableView>
+        <Label layoutX="781.0" layoutY="7.0" styleClass="heading" text="Votre Panier">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+
+        <ScrollPane hbarPolicy="NEVER" layoutX="662.0" layoutY="54.0" prefHeight="551.0" prefWidth="211.0" styleClass="no-padding" AnchorPane.leftAnchor="662.0" AnchorPane.rightAnchor="6.0">
+         <content>
+              <AnchorPane prefHeight="558.0" prefWidth="389.0" styleClass="no-padding">
+                <children>
+        
+                    <VBox fx:id="productList" layoutX="25.0" prefWidth="350.0" />
+                    <AnchorPane layoutX="71.0" layoutY="350.0" prefHeight="129.0" prefWidth="191.0" styleClass="no-padding">
+                        <children>
+                            <Label layoutX="18.0" styleClass="heading-sub" text="Somme Commande" />
+                        <Label layoutX="1.0" layoutY="55.0" text="Brute :" />
+                        <Label fx:id="grossTotal" alignment="CENTER_RIGHT" layoutX="73.0" layoutY="55.0" prefHeight="17.0" prefWidth="103.0" text="0.00" />
+                        <Label layoutX="1.0" layoutY="75.0" text="Packaging:" />
+                        <Label fx:id="packagingTotal" alignment="CENTER_RIGHT" layoutX="73.0" layoutY="75.0" prefHeight="17.0" prefWidth="77.0" text="0.00" />
+                        <Label layoutX="1.0" layoutY="95.0" text="Total:" />
+                        <Label fx:id="total" alignment="CENTER_RIGHT" layoutX="40.0" layoutY="95.0" prefHeight="17.0" prefWidth="110.0" styleClass="green-text" text="0.00" />
+                        <Button layoutX="-9.0" layoutY="112.0" mnemonicParsing="false" onAction="#checkout" prefHeight="27.0" prefWidth="153.0" styleClass="action-button" text="Confirmer Achat" />
+                        </children>
+                    </AnchorPane>
+                    <Button layoutX="113.0" layoutY="507.0" mnemonicParsing="false" onAction="#exitWindow" prefHeight="25.0" prefWidth="108.0" styleClass="back-button" text="Vider Panier " />
+                  <TableView fx:id="CartTable" layoutX="56.0" layoutY="150.0" prefHeight="200.0" prefWidth="222.0">
+                    <columns>
+                      <TableColumn fx:id="CartQuantityColumn" prefWidth="75.0" text="quantite" />
+                        <TableColumn fx:id="CartTotalProductColumn" prefWidth="69.0" text="total  linge" />
+                        <TableColumn fx:id="CartProductColumn" prefWidth="75.0" text="produit" />
+                    </columns>
+                  </TableView>
+                  <Label fx:id="test" layoutX="42.0" layoutY="56.0" />
+                </children>
+              </AnchorPane>
+         </content>
+        </ScrollPane>
+      <Label layoutX="554.0" layoutY="34.0" onMouseClicked="#addAction" text="+">
+         <font>
+            <Font size="53.0" />
+         </font>
+      </Label>
+      <Label layoutX="608.0" layoutY="32.0" onMouseClicked="#reduceAction" prefHeight="61.0" prefWidth="22.0" text="-">
+         <font>
+            <Font size="55.0" />
+         </font>
+      </Label>
+      <TextField fx:id="qte" layoutX="564.0" layoutY="113.0" prefHeight="25.0" prefWidth="88.0" />
+    </children>
+</AnchorPane>
