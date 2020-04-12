@@ -1,15 +1,28 @@
 package tn.shoppy.controller.SellerInterface;
 
+import java.awt.event.ActionEvent;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.print.PageLayout;
+import javafx.print.PageOrientation;
+import javafx.print.Paper;
+import javafx.print.Printer;
+import javafx.print.PrinterAttributes;
+import javafx.print.PrinterJob;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.transform.Scale;
+import javafx.stage.Stage;
 import static tn.shoppy.controller.ShopController.sessionShop;
 import tn.shoppy.model.Shop;
+import tn.shoppy.services.NodeToPDFExport;
 import tn.shoppy.services.OfferService;
 import tn.shoppy.services.ShopService;
 import tn.shoppy.utils.ConnectionDB;
@@ -46,6 +59,11 @@ public class SellerInterfaceController implements Initializable {
     Label shopOverviewStockSizeLabel;
     @FXML
     Label shopOverviewStockValueLabel;
+    //--------
+    @FXML
+    Button sellerExportToPDFButton;
+    @FXML
+    AnchorPane sellerOverviewPane;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -81,5 +99,12 @@ public class SellerInterfaceController implements Initializable {
         shopOverviewStockSizeLabel.setText(String.valueOf(ShopService.getInstance().calculateStock(sessionShop)));
         shopOverviewStockValueLabel.setText(String.valueOf(ShopService.getInstance().calculateMerchandiseValue(sessionShop))+" TND");
     }
+    
+    public void exportToPDFAction() throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException
+    {
+        NodeToPDFExport.printNode(sellerOverviewPane);
+    }
+    
+
 
 }

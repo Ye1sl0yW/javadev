@@ -30,7 +30,7 @@
             <tabs>
                 <Tab closable="false" text="Vue d'ensemble">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="196.0" prefWidth="600.0">
+                        <AnchorPane fx:id="sellerOverviewPane" minHeight="0.0" minWidth="0.0" prefHeight="196.0" prefWidth="600.0">
                      <children>
                         <Text layoutX="50.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom du magasin :" wrappingWidth="139.0000107884407">
                            <font>
@@ -82,6 +82,7 @@
                         <Label fx:id="shopOverviewShopNameLabel" layoutX="189.0" layoutY="45.0" prefHeight="17.0" prefWidth="92.0" text="mon magasin" />
                         <Label fx:id="shopOverviewSellerNameLabel" layoutX="189.0" layoutY="79.0" text="inconnu" />
                         <Button fx:id="shopOverviewCalculateStockValuesButton" layoutX="913.0" layoutY="251.0" mnemonicParsing="false" onAction="#refreshStockValuesAction" prefHeight="35.0" prefWidth="83.0" text="Recalculer" />
+                        <Button fx:id="sellerExportToPDFButton" layoutX="929.0" layoutY="52.0" mnemonicParsing="false" onAction="#exportToPDFAction" text="Imprimer" />
                      </children></AnchorPane>
                     </content>   
                 </Tab>
