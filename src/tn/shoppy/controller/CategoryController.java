@@ -1,5 +1,6 @@
 package tn.shoppy.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
@@ -21,11 +22,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 import tn.shoppy.services.CategoryService;
 import tn.shoppy.utils.InputCheck;
 
@@ -42,8 +50,6 @@ public class CategoryController implements Initializable{
      */
     @FXML
     private TableView<Category> categoryTable;
-    @FXML
-    private TableColumn<Category, Integer> categoryIdColumn;
     @FXML
     private TableColumn<Category, String> categoryNameColumn;
    
@@ -62,9 +68,20 @@ public class CategoryController implements Initializable{
     @FXML
     private TextField searchCategoryField;
 
-    @FXML
     private ImageView productHelpImage;
     private Tooltip helpTooltip;
+    @FXML
+    private Button searchCategoryButton;
+    @FXML
+    private Button updateCatégorieButton;
+    @FXML
+    private Button addCategoryButton;
+    @FXML
+    private Button deleteCategoryAction;
+    @FXML
+    private ImageView categoryHelpImage;
+    @FXML
+    private Button Categorytstat;
     
     
     @Override
@@ -235,6 +252,7 @@ public class CategoryController implements Initializable{
     
         //************ SEARCH *********************//
     
+    @FXML
      public void searchCategoryAction() {
         List<Category> resultList = new ArrayList<>();
         CategoryService categoryService = CategoryService.getInstance();
@@ -253,6 +271,7 @@ public class CategoryController implements Initializable{
         }
     }
      
+    @FXML
      public void typingSearchCategoryAction(KeyEvent event) {
         List<Category> resultList = new ArrayList<>();
         CategoryService categoryService = CategoryService.getInstance();
@@ -270,8 +289,18 @@ public class CategoryController implements Initializable{
             refreshTableData();
         }
     }
-    
-    
-    
+
+    @FXML
+    public void Categorytstat(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/tn/shoppy/view/statP2.fxml"));
+            Scene scene = new Scene(root);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+            window.show();
+ 
+        } catch (IOException ex) {
+        }
+    }
     
 }

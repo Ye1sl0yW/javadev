@@ -76,5 +76,6 @@
             <Image url="@../resources/images/help.png" />
          </image>
       </ImageView>
+      <Button fx:id="Categorytstat" layoutX="881.0" layoutY="483.0" mnemonicParsing="false" onAction="#Categorytstat" text="Statistique" />
     </children>
 </AnchorPane>

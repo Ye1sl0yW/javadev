@@ -10,12 +10,12 @@
 
 <AnchorPane id="AnchorPane" prefHeight="682.0" prefWidth="923.0" style="-fx-background-color: #647495;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.shoppy.controller.StatEController">
    <children>
-      <Label layoutX="255.0" layoutY="38.0" prefHeight="27.0" prefWidth="457.0" text="Classification des produits selon leurs prix">
+      <Label layoutX="303.0" layoutY="60.0" prefHeight="27.0" prefWidth="457.0" text="Classification des produits selon leurs prix">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <BarChart fx:id="BarChart" layoutX="97.0" layoutY="91.0" prefHeight="485.0" prefWidth="664.0">
+      <BarChart fx:id="BarChart" layoutX="220.0" layoutY="119.0" prefHeight="357.0" prefWidth="521.0">
          <xAxis>
             <CategoryAxis prefWidth="439.0" side="BOTTOM" />
          </xAxis>
@@ -24,6 +24,6 @@
          </yAxis>
       </BarChart>
       <Button fx:id="retour" layoutX="832.0" layoutY="21.0" mnemonicParsing="false" onAction="#retour" text="Retour" />
-      <Button fx:id="affstat" layoutX="413.0" layoutY="602.0" mnemonicParsing="false" onAction="#affstat" prefHeight="31.0" prefWidth="198.0" text="Afficher les statistiques" />
+      <Button fx:id="affstat" layoutX="381.0" layoutY="505.0" mnemonicParsing="false" onAction="#affstat" prefHeight="31.0" prefWidth="198.0" text="Afficher les statistiques" />
    </children>
 </AnchorPane>

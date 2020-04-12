@@ -414,7 +414,7 @@ public class ProductController implements Initializable {
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(scene);
             window.show();
-
+ 
         } catch (IOException ex) {
         }
     }
