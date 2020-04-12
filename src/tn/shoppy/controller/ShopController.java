@@ -347,13 +347,6 @@ public class ShopController implements Initializable {
                 try {
                     Parent root = loader.load();
                     
-//                    SellerInterfaceController sic = loader.getController();
-//                    sic.setSessionShop(shop);
-//
-//                    loader.setControllerFactory(c -> {
-//                        return new SellerInterfaceController(shop);
-//                    });
-
                     Scene scene = new Scene(root);
                     Stage sellerInterface = new Stage();
                     sellerInterface.setTitle("Shoppy Desktop");
