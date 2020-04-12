@@ -19,7 +19,7 @@ public class AjoutNoteMagasinPresentation extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root=FXMLLoader.load(getClass().getResource("/tn/shoppy/view/ajoutnote.fxml"));
+        Parent root=FXMLLoader.load(getClass().getResource("/tn/shoppy/view/ajoutNote.fxml"));
         Scene s = new Scene(root);
         stage.setTitle("TESTING");
         stage.setScene(s);

@@ -30,7 +30,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
-import utils.InputCheck;
+import tn.shoppy.utils.HA.InputCheck;
 
 /**
  * FXML Controller class
@@ -285,7 +285,7 @@ public class PortfoliosController implements Initializable {
     
     
     private boolean checkFields(){
-        if(InputCheck.IsInt(user_id_field.getText())) return true;
+        if(InputCheck.testNumberInput(user_id_field.getText())) return true;
         messageErreur("Entrées incorrectes !");
         return false;
             

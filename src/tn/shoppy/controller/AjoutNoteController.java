@@ -21,7 +21,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.text.Text;
 import javafx.scene.control.TextArea;
-import utils.InputCheck;
+import tn.shoppy.utils.HA.InputCheck;
 import tn.shoppy.model.Note;
 import tn.shoppy.model.Product;
 import utils.testSession;

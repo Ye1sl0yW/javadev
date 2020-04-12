@@ -38,7 +38,7 @@ import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import utils.InputCheck;
+import tn.shoppy.utils.HA.InputCheck;
 
 
 public class PointsController implements Initializable {
@@ -219,7 +219,7 @@ public class PointsController implements Initializable {
     }
 
     private boolean checkFields(){
-        if(InputCheck.IsInt(portfolio_id_field.getText()) && InputCheck.IsInt(montant_field.getText()) && InputCheck.IsFutureDate(Date.valueOf(date_field.getValue()))) return true;
+        if(InputCheck.testNumberInput(portfolio_id_field.getText()) && InputCheck.testNumberInput(montant_field.getText()) && InputCheck.testFutureDate(Date.valueOf(date_field.getValue()))) return true;
         messageErreur("Entrées incorrectes !");
         return false;
             

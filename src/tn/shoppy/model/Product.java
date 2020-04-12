@@ -5,7 +5,7 @@
  */
 package tn.shoppy.model;
 
-<<<<<<< HEAD
+
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -170,27 +170,4 @@ public class Product {
     public void setUpdated_at(Date updated_at) {
         this.updated_at = updated_at;
     }
-
-    
-    
-=======
-/**
- *
- * @author os
- */
-public class Product {
-    public String getNom(){
-        return "PRODUIT TEST";
-    }
-    public String getDescription(){
-        return "DESCRIPTION TEST";
-    }
-    public float getPrix(){
-        return 10;
-    }
-    public String getMarque(){
-        return "MARQUE TEST";
-    }
->>>>>>> ouss
-    
 }
