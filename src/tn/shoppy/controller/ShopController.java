@@ -235,15 +235,29 @@ public class ShopController implements Initializable {
                     shop.setNom(newName);
                     if(updateMagasinSellerComboBox.getValue() != null){
                        shop.setId_vendeur(updateMagasinSellerComboBox.getValue()); 
-                    }                
-                    shop.setMatricule_fiscal(Integer.parseInt(newTaxID));
+                    }             
+                    int intTaxID = Integer.parseInt(newTaxID);
+                    if(intTaxID != selection.getMatricule_fiscal() && ShopService.getInstance().uniqueTaxID(intTaxID)){
+                       shop.setMatricule_fiscal(Integer.parseInt(newTaxID)); 
+                    }
+                    else if (intTaxID != selection.getMatricule_fiscal() && !ShopService.getInstance().uniqueTaxID(intTaxID)) {
+                        Alert inputAlert = new Alert(Alert.AlertType.ERROR, "Ce matricule fiscal existe déja dans la base de données. \n"
+                                + "Le nouveau matricule saisi ne sera pas pris en compte pour cette modification.", ButtonType.OK);
+                        inputAlert.showAndWait();
+                        shop.setMatricule_fiscal(selection.getMatricule_fiscal());
+                    }
+                    else if (intTaxID == selection.getMatricule_fiscal()){
+                        shop.setMatricule_fiscal(selection.getMatricule_fiscal());
+                    }
                     ShopService shopService = ShopService.getInstance();
                     shopService.updateShop(shop);
                     a.close();
                 }
                 else
                 {
-                    Alert inputAlert = new Alert(Alert.AlertType.ERROR,"Le format de données saisi est incorrect.",ButtonType.OK);
+                    Alert inputAlert = new Alert(Alert.AlertType.ERROR, "Le format de données saisi est incorrect: \n"
+                            + " Le nom du magasin doit contenir au moins une lettre. \n"
+                            + " Le matricule fiscal n'est composé que de chiffres.", ButtonType.OK);
                     inputAlert.showAndWait();
                 }
             }else{
