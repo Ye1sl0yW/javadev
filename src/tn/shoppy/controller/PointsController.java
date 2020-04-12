@@ -173,7 +173,7 @@ public class PointsController implements Initializable {
         montant_field.setText(String.valueOf(t.getMontant()));
         date_field.setValue(t.getDate_exp().toLocalDate());
         
-        username=Interaction_Users.getUser(t.getId());
+        username=Interaction_Users.getUser(t.getPortfolio_id());
         user_id_field.setText(username);
         pid=t.getPortfolio_id();
         //                  MISE A JOUR TEXTS
