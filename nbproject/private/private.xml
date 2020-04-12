@@ -3,16 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/os/Documents/NetBeansProjects/pidev/src/pages/AjoutPointsController.java</file>
-            <file>file:/C:/Users/os/Documents/NetBeansProjects/pidev/src/InteractionDB/Interaction_Notes.java</file>
-            <file>file:/C:/Users/os/Documents/NetBeansProjects/pidev/src/pages/ajoutPoints.fxml</file>
-            <file>file:/C:/Users/os/Documents/NetBeansProjects/pidev/src/test/Main.java</file>
+            <file>file:/C:/Users/os/Documents/NetBeansProjects/pidev/src/pages/PortfoliosController.java</file>
             <file>file:/C:/Users/os/Documents/NetBeansProjects/pidev/src/pages/PointsController.java</file>
-            <file>file:/C:/Users/os/Documents/NetBeansProjects/pidev/src/test/testAPI.java</file>
-            <file>file:/C:/Users/os/Documents/NetBeansProjects/pidev/src/Entities/Ticket.java</file>
-            <file>file:/C:/Users/os/Documents/NetBeansProjects/pidev/src/pages/Points.fxml</file>
+            <file>file:/C:/Users/os/Documents/NetBeansProjects/pidev/src/InteractionDB/Interaction_Users.java</file>
+            <file>file:/C:/Users/os/Documents/NetBeansProjects/pidev/src/test/PointsPresentation.java</file>
             <file>file:/C:/Users/os/Documents/NetBeansProjects/pidev/src/InteractionDB/Interaction_Points.java</file>
-            <file>file:/C:/Users/os/Documents/NetBeansProjects/pidev/src/Entities/Note.java</file>
         </group>
     </open-files>
 </project-private>
