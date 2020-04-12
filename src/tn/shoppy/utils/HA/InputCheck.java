@@ -3,69 +3,69 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+<<<<<<< HEAD:src/tn/shoppy/utils/HA/InputCheck.java
 package tn.shoppy.utils.HA;
+=======
+package utils;
+>>>>>>> ouss:src/tn/shoppy/utils/InputCheck.java
 
-import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
- * @author Haroun
+ * @author os
  */
 public class InputCheck {
-/**
- * Consutructor and Singleton Design Pattern
- */
     
-    private static InputCheck inputCheckInstance;
-    
-    public static InputCheck getInstance()
-    {   //Singleton Design Pattern
-        if (inputCheckInstance==null)
-        {
-            inputCheckInstance = new InputCheck();
-        }
-        return inputCheckInstance;  
-    }
-    
-    
-    
- 
-    public boolean testTextInput(String a) {
+    public static boolean IsInt(String s){
         try{
-            if (a.length() == 0 || testNumberInput(a) || testFloatInput(a)) 
-            {
-                return false;
-            }
-        }
-        catch(java.lang.NullPointerException e){
-            System.out.println("Error : testTextInput");
+            Integer.parseInt(s);
+                }
+        
+        catch(NullPointerException | NumberFormatException e){
             return false;
         }
         return true;
     }
-
-    public boolean testNumberInput(String a) {
-        return (a.matches("^[0-9]*") && a.length()>0);
-    }
     
-    public boolean testFloatInput (String a) {
-        try
-        {
-            Float i = Float.parseFloat(a);
-            return true;
-        }
-        catch ( NumberFormatException e )
-        {
+    public static boolean IsFloat(String s){
+        try{
+            Float.parseFloat(s);
+                }
+        
+        catch(NullPointerException | NumberFormatException e){
             return false;
         }
+        return true;
     }
     
-    public boolean testDoubleInput (String a) {
-        try
-        {
-            Double i = Double.parseDouble(a);
-            return true;
+    public static boolean IsDate(String s){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        try{
+            dateFormat.parse(s.trim());
+                }
+        
+        catch(ParseException e){
+            return false;
         }
+        return true;
+    }
+   /* public static boolean IsFutureDate(String s){
+        if(IsDate(s) ){
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+            Date d;
+            try {
+                d = format.parse(s);
+            } catch (ParseException ex) {
+                        return false;            }
+            Date now=new Date();
+            if (now.compareTo(d)<=0) return true;
+        }
+<<<<<<< HEAD:src/tn/shoppy/utils/HA/InputCheck.java
         catch ( NumberFormatException e )
         {
             return false;
@@ -81,18 +81,15 @@ public class InputCheck {
     public boolean testFutureDate(Date date)
     {
         return (date.compareTo(new Date(System.currentTimeMillis())) >= 0 );
+=======
+        return false;
+>>>>>>> ouss:src/tn/shoppy/utils/InputCheck.java
     }
+    */
     
-    /**
-     * Tests if date1 is after date2
-     * @param date1
-     * @param date2
-     * @return true: if date1 is after or equal to date2
-     *         false: if date1 is before date2. 
-     */
-    public boolean testFutureDate(Date date1, Date date2)
-    {
-        return (date1.compareTo(date2) <= 0 );
+    public static boolean IsFutureDate(Date d){
+               
+            Date now=new Date();
+        return now.compareTo(d)<=0;
     }
-    
 }
