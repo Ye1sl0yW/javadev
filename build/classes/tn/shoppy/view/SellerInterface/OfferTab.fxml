@@ -102,7 +102,6 @@
         </ImageView>
         <Button fx:id="exportExcelShopButton" layoutX="849.0" layoutY="535.0" mnemonicParsing="false" onAction="#exportToExcelAction" prefHeight="30.0" prefWidth="170.0" text="Exporter vers Excel" />
         <Button fx:id="deleteOfferButton" layoutX="849.0" layoutY="574.0" mnemonicParsing="false" onAction="#deleteOfferAction" prefHeight="30.0" prefWidth="170.0" text="Supprimer la selection" />
-      <Button layoutX="785.0" layoutY="14.0" mnemonicParsing="false" onAction="#testAction" text="Button" />
 
     </children>
 </AnchorPane>

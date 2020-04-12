@@ -136,26 +136,29 @@ public class ShopController implements Initializable {
         String name = addMagasinNameField.getText();
         String taxID = addMagasinFiscalityField.getText();
         boolean result = false;
-        
-        if (inputCheck.testTextInput(name) && inputCheck.testNumberInput(taxID))
-        {
+
+        if (inputCheck.testTextInput(name) && inputCheck.testNumberInput(taxID)) {
             int intTaxID = Integer.parseInt(taxID);
-            Integer sellerId = addMagasinSellerComboBox.getValue();
-            result = shopService.addShop(new Shop(0,sellerId,name,intTaxID));
+            if (shopService.uniqueTaxID(intTaxID)) {
+                Integer sellerId = addMagasinSellerComboBox.getValue();
+                result = shopService.addShop(new Shop(0, sellerId, name, intTaxID));
+            } else {
+                Alert inputAlert = new Alert(Alert.AlertType.ERROR, "Ce matricule fiscal existe déja dans la base de données !", ButtonType.OK);
+                inputAlert.showAndWait();
+            }
+        } else {
+//            System.out.println("WIP : Error dialog => Wrong input format !");
+            Alert inputAlert = new Alert(Alert.AlertType.ERROR, "Le format de données saisi est incorrect: \n"
+                    + " Le nom du magasin doit contenir au moins une lettre. \n"
+                    + " Le matricule fiscal n'est composé que de chiffres.", ButtonType.OK);
+            inputAlert.showAndWait();
         }
-        else
-        {
-            System.out.println("WIP : Error dialog => Wrong input format !");
-        }
-        if (result)
-        {
+        if (result) {
             refreshTableData();
             System.out.println("Succès de l'ajout du magasin !");
-        }
-        else
-        {
+        } else {
             System.out.println("Echec de l'ajout du magasin !");
-            
+
         }
 
     }

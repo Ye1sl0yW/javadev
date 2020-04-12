@@ -167,7 +167,7 @@ public class ShopService {
         HashSet<Shop> cleanResult = new HashSet<>();
         List<Shop> r1 = findShopsByName(input);
         List<Shop> r2 = findShopsByTaxID(input);
-        List<Shop> r3 = findShopsByID(input);
+//        List<Shop> r3 = findShopsByID(input);
 
         if(r1 != null){
             cleanResult.addAll(r1);
@@ -175,9 +175,9 @@ public class ShopService {
         if(r2 != null){
             cleanResult.addAll(r2);
         }
-        if(r3 != null){
-            cleanResult.addAll(r3);
-        }
+//        if(r3 != null){
+//            cleanResult.addAll(r3);
+//        }
         List<Shop> result = new ArrayList<>(cleanResult);
         return result;
     }
