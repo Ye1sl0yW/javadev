@@ -193,13 +193,7 @@ public class SellerOfferController implements Initializable {
             offerTable.setPlaceholder(new Label("Il n'y a aucune offre dans la base de données. Veuillez en rajouter! "));
         }
     }
-    
-    public void testAction()
-    {
-//        refreshTableData();
-        System.out.println(sessionShop);
-    }
-    
+        
     //********************* U **************************//
     @FXML
     public void selectOneOfferAction(KeyEvent keyEvent) {

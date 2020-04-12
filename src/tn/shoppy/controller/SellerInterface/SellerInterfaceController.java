@@ -64,6 +64,8 @@ public class SellerInterfaceController implements Initializable {
     Button sellerExportToPDFButton;
     @FXML
     AnchorPane sellerOverviewPane;
+    @FXML
+    Button shopOverviewCalculateStockValuesButton;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -102,7 +104,14 @@ public class SellerInterfaceController implements Initializable {
     
     public void exportToPDFAction() throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException
     {
+                //Node.setVisible(boolean)
+        sellerExportToPDFButton.setVisible(false);
+        shopOverviewCalculateStockValuesButton.setVisible(false);
+                
         NodeToPDFExport.printNode(sellerOverviewPane);
+        
+        shopOverviewCalculateStockValuesButton.setVisible(true);
+        sellerExportToPDFButton.setVisible(true);
     }
     
 
