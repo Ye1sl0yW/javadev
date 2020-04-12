@@ -8,9 +8,10 @@ package tn.shoppy.model;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import tn.shoppy.services.ProductService;
 
 /**
- * 
+ *
  * @author anas fattoum
  */
 public class Product {
@@ -43,22 +44,6 @@ public class Product {
         categoriesString = "Pas de catégorie.";
     }
 
-    public Product(String text, String text0, int i, int parseInt, Object object, Object object0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-      public Product(int id,String nom, int quantite,double prix, String marque) {
-        this.id = id;
-       // this.id_magasin = id_magasin;
-        this.nom = nom;
-         this.quantite = quantite;
-        //this.description = description;
-        this.prix = prix;
-        this.marque = marque;
-        
-    }
-
-
     /**
      * Methods 
      */
@@ -89,9 +74,15 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" + "id=" + id + ", id_magasin=" + id_magasin + ", nom=" + nom + 
+//        if (categoriesID.size()>0 &&ProductService.getInstance().getAllCategoriesAsString(this.id)!=null) {
+//            categoriesString = ProductService.getInstance().getAllCategoriesAsString(this.id);
+//        }
+        String r = "Product{" + "id=" + id + ", id_magasin=" + id_magasin + ", nom=" + nom + 
                 ", quantite=" + quantite + ", description=" + description + 
                 ", prix=" + prix + ", marque=" + marque + "ID catégories" + categoriesID + categoriesString +'}';
+        
+
+    return r;
     }
     
     
@@ -178,4 +169,8 @@ public class Product {
     public void setUpdated_at(Date updated_at) {
         this.updated_at = updated_at;
     }
+
+    
+    
+    
 }

@@ -357,7 +357,15 @@ public ArrayList<Product> rechercherNomEt(String rech) throws SQLException {
                 
                 
                       
-   Product per = new Product(rst.getInt(1),rst.getString(2),rst.getInt(3),rst.getFloat(4),rst.getString(5));
+   Product per = new Product();
+   //public Product(int id,int id_magasin, String nom, int quantite, String description, double prix, String marque) {
+   //
+   per.setId(rst.getInt(1));
+   per.setNom(rst.getString(2));
+   per.setQuantite(rst.getInt(3));
+   per.setPrix(rst.getFloat(4));
+   per.setMarque(rst.getString(5));
+
   
 
             off.add(e);
