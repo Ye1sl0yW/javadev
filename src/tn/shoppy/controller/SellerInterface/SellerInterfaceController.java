@@ -25,12 +25,12 @@ import javafx.scene.transform.Scale;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
-import static tn.shoppy.controller.ShopController.sessionShop;
+import static tn.shoppy.controller.dashboard.shop_management.ShopController.sessionShop;
 import tn.shoppy.model.Shop;
-import tn.shoppy.services.NodeToPDFExport;
-import tn.shoppy.services.OfferService;
-import tn.shoppy.services.ShopService;
-import tn.shoppy.utils.ConnectionDB;
+import tn.shoppy.services.shop_management.NodeToPDFExport;
+import tn.shoppy.services.shop_management.OfferService;
+import tn.shoppy.services.shop_management.ShopService;
+import tn.shoppy.utils.HA.ConnectionDB;
 
 /**
  * This controller class is used to control the whole seller interface window. 

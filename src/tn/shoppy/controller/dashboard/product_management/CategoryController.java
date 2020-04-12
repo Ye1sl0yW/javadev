@@ -1,4 +1,4 @@
-package tn.shoppy.controller;
+package tn.shoppy.controller.dashboard.product_management;
 
 import java.io.IOException;
 import java.net.URL;
@@ -17,7 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import tn.shoppy.model.Category;
-import tn.shoppy.utils.ConnectionDB;
+import tn.shoppy.utils.HA.ConnectionDB;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,8 +34,8 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import tn.shoppy.services.CategoryService;
-import tn.shoppy.utils.InputCheck;
+import tn.shoppy.services.product_management.CategoryService;
+import tn.shoppy.utils.HA.InputCheck;
 
 /**
  *

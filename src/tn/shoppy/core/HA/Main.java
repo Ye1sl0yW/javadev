@@ -1,4 +1,4 @@
-package tn.shoppy.core;
+package tn.shoppy.core.HA;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -8,9 +8,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import tn.shoppy.services.ShopService;
+import tn.shoppy.services.shop_management.ShopService;
 
-import tn.shoppy.utils.ConnectionDB;
+import tn.shoppy.utils.HA.ConnectionDB;
 
 /**
  *

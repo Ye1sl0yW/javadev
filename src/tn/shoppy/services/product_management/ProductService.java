@@ -1,4 +1,4 @@
-package tn.shoppy.services;
+package tn.shoppy.services.product_management;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,7 +14,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import tn.shoppy.model.Product;
 import tn.shoppy.model.Shop;
-import tn.shoppy.utils.ConnectionDB;
+import tn.shoppy.utils.HA.ConnectionDB;
 
 /**
  *

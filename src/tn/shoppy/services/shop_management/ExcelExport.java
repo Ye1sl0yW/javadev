@@ -1,4 +1,4 @@
-package tn.shoppy.services;
+package tn.shoppy.services.shop_management;
 
 import javafx.scene.control.TableView;
 import org.apache.poi.hssf.usermodel.HSSFRow;

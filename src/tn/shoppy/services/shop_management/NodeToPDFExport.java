@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tn.shoppy.services;
+package tn.shoppy.services.shop_management;
 
 import java.lang.reflect.InvocationTargetException;
 import javafx.print.PageLayout;

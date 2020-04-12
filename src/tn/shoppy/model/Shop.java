@@ -1,7 +1,7 @@
 package tn.shoppy.model;
 
 import javafx.beans.property.StringProperty;
-import tn.shoppy.services.ShopService;
+import tn.shoppy.services.shop_management.ShopService;
 
 /**
  * Model class for a shop (Magasin)

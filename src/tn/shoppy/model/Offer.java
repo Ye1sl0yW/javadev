@@ -6,7 +6,7 @@
 package tn.shoppy.model;
 
 import java.sql.Date;
-import tn.shoppy.services.OfferService;
+import tn.shoppy.services.shop_management.OfferService;
 
 
 /**

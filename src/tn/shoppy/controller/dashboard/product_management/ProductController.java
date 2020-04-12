@@ -1,4 +1,4 @@
-package tn.shoppy.controller;
+package tn.shoppy.controller.dashboard.product_management;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,12 +37,12 @@ import javafx.stage.Stage;
 import tn.shoppy.model.Category;
 import tn.shoppy.model.Product;
 import tn.shoppy.model.Shop;
-import tn.shoppy.services.CategoryService;
-import tn.shoppy.services.Pdf;
-import tn.shoppy.services.ProductService;
-import tn.shoppy.services.ShopService;
-import tn.shoppy.utils.ConnectionDB;
-import tn.shoppy.utils.InputCheck;
+import tn.shoppy.services.product_management.CategoryService;
+import tn.shoppy.services.product_management.Pdf;
+import tn.shoppy.services.product_management.ProductService;
+import tn.shoppy.services.shop_management.ShopService;
+import tn.shoppy.utils.HA.ConnectionDB;
+import tn.shoppy.utils.HA.InputCheck;
 
 /**
  *

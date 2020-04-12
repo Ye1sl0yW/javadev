@@ -1,4 +1,4 @@
-package tn.shoppy.controller;
+package tn.shoppy.controller.dashboard;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -8,7 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.AnchorPane;
-import tn.shoppy.services.Pdf;
+import tn.shoppy.services.product_management.Pdf;
 
 /**
  * This controller class is used to control the whole dashboard window. 

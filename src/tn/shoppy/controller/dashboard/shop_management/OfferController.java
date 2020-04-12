@@ -1,4 +1,4 @@
-package tn.shoppy.controller;
+package tn.shoppy.controller.dashboard.shop_management;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -28,11 +28,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import tn.shoppy.model.Offer;
 import tn.shoppy.model.Shop;
-import tn.shoppy.services.ExcelExport;
-import tn.shoppy.services.OfferService;
-import tn.shoppy.services.ShopService;
-import tn.shoppy.utils.ConnectionDB;
-import tn.shoppy.utils.InputCheck;
+import tn.shoppy.services.shop_management.ExcelExport;
+import tn.shoppy.services.shop_management.OfferService;
+import tn.shoppy.services.shop_management.ShopService;
+import tn.shoppy.utils.HA.ConnectionDB;
+import tn.shoppy.utils.HA.InputCheck;
 
 /**
  *

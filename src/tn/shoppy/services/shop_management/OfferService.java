@@ -1,4 +1,4 @@
-package tn.shoppy.services;
+package tn.shoppy.services.shop_management;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import tn.shoppy.model.Offer;
 import tn.shoppy.model.Shop;
-import tn.shoppy.utils.ConnectionDB;
-import tn.shoppy.utils.InputCheck;
+import tn.shoppy.utils.HA.ConnectionDB;
+import tn.shoppy.utils.HA.InputCheck;
 
 /**
  *

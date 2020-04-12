@@ -1,4 +1,4 @@
-package tn.shoppy.services;
+package tn.shoppy.services.product_management;
 
 import tn.shoppy.model.Product;
 

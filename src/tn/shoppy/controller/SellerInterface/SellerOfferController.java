@@ -25,14 +25,14 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import tn.shoppy.controller.ShopController;
+import tn.shoppy.controller.dashboard.shop_management.ShopController;
 import tn.shoppy.model.Offer;
 import tn.shoppy.model.Shop;
-import tn.shoppy.services.ExcelExport;
-import tn.shoppy.services.OfferService;
-import tn.shoppy.services.ShopService;
-import tn.shoppy.utils.ConnectionDB;
-import tn.shoppy.utils.InputCheck;
+import tn.shoppy.services.shop_management.ExcelExport;
+import tn.shoppy.services.shop_management.OfferService;
+import tn.shoppy.services.shop_management.ShopService;
+import tn.shoppy.utils.HA.ConnectionDB;
+import tn.shoppy.utils.HA.InputCheck;
 
 /**
  *

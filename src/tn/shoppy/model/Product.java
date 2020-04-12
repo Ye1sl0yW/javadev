@@ -8,7 +8,7 @@ package tn.shoppy.model;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-import tn.shoppy.services.ProductService;
+import tn.shoppy.services.product_management.ProductService;
 
 /**
  *

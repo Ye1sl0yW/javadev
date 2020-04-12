@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tn.shoppy.controller;
+package tn.shoppy.controller.dashboard.product_management;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,7 +23,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import tn.shoppy.model.Product;
-import tn.shoppy.services.ProductService;
+import tn.shoppy.services.product_management.ProductService;
 
 /**
  * FXML Controller class
