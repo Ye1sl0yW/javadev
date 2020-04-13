@@ -32,7 +32,7 @@ public class InputCheck {
  
     public boolean testTextInput(String a) {
         try{
-            if (a.length() == 0 || testNumberInput(a) || testFloatInput(a)) 
+            if (a.length() == 0 || testNumberInput(a) || testFloatInput(a) || a.contains("@")) 
             {
                 return false;
             }
