@@ -1,0 +1,150 @@
+[33mcommit 6eab22188125ed6d2bab9d5b87fdf9efa2216472[m[33m ([m[1;36mHEAD -> [m[1;32mHamdi.Gtari[m[33m, [m[1;31morigin/Hamdi.Gtari[m[33m)[m
+Merge: e1e9a81 4b55ff7
+Author: hamdigtari <hamdi.gtari@users.noreply.github.com>
+Date:   Tue Apr 7 13:06:42 2020 +0100
+
+    Merge branch 'Hamdi.Gtari' of https://github.com/Ye1sl0yW/javadev into Hamdi.Gtari
+
+[33mcommit e1e9a81eee77bc2ab5b90806c6a53b315fcadfb9[m
+Author: hamdigtari <hamdi.gtari@users.noreply.github.com>
+Date:   Tue Apr 7 13:02:07 2020 +0100
+
+     Update --- v2.3 HG
+
+[33mcommit 4b55ff7d8120091d177e0427caa90c5bf1b9cdd7[m
+Author: hamdigtari <49796236+hamdigtari@users.noreply.github.com>
+Date:   Tue Apr 7 13:00:23 2020 +0100
+
+    Update README.md
+
+[33mcommit 729f0413115379dc0934af4a55d4c9c45bc4157c[m
+Author: hamdigtari <hamdi.gtari@users.noreply.github.com>
+Date:   Sun Apr 5 23:59:55 2020 +0100
+
+     Update the project ---- v2.2 HG
+
+[33mcommit 6d5cebc0c1b2761d34b50771923da7a30933cc3a[m
+Author: hamdigtari <hamdi.gtari@users.noreply.github.com>
+Date:   Sun Apr 5 23:50:26 2020 +0100
+
+     Update the project ---- v2.1 HG
+
+[33mcommit ee59e3411e768cb4ba50388e019cb686d2eec4c2[m
+Author: hamdigtari <hamdi.gtari@users.noreply.github.com>
+Date:   Tue Mar 31 14:46:48 2020 +0100
+
+    develop the getAllAccounts() Methode
+
+[33mcommit c67b8e4e39cbced160ab2aec586dcab69b992141[m
+Author: hamdigtari <hamdi.gtari@users.noreply.github.com>
+Date:   Mon Mar 30 12:11:14 2020 +0100
+
+     updatesom eedependencies V2
+
+[33mcommit d65f40b7860804c36bafa34acd6f72241cedb066[m
+Author: hamdigtari <hamdi.gtari@users.noreply.github.com>
+Date:   Mon Mar 30 12:07:07 2020 +0100
+
+     add som eeedependencies
+
+[33mcommit 5833cc6286e84ed7e769e69208b09cf66af82a5d[m
+Author: hamdigtari <hamdi.gtari@users.noreply.github.com>
+Date:   Mon Mar 30 12:05:05 2020 +0100
+
+     ...
+
+[33mcommit bbfa672b319b46360e5faa67396864c9d0077af3[m
+Author: hamdigtari <hamdi.gtari@users.noreply.github.com>
+Date:   Mon Mar 30 11:47:16 2020 +0100
+
+     30.03 commit
+
+[33mcommit 0c7385737106ef721cd4ce1d1013df16896b52ef[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Author: use17ko <ye1sl0yw>
+Date:   Tue Mar 24 12:30:43 2020 +0100
+
+    séparation des branches
+
+[33mcommit 833298f15d47850a48bd0fcfb67f2f5775249b99[m[33m ([m[1;31morigin/haroun[m[33m)[m
+Author: unknown <haroun.elleuch@esprit.tn>
+Date:   Mon Mar 23 18:08:32 2020 +0100
+
+    Resolution de bugs liés à la migration de base de données.
+
+[33mcommit 98caffea0eb45a9eb7d791915ae6604bc609fb58[m
+Author: unknown <haroun.elleuch@esprit.tn>
+Date:   Mon Mar 23 17:24:30 2020 +0100
+
+    Connexion à la base de données du projet (Shoppy) + implémentation de la jointure user <-> magasin
+
+[33mcommit 8eef601a189d5c10ca2f388e91474d0d220aedc3[m
+Author: unknown <haroun.elleuch@esprit.tn>
+Date:   Mon Mar 23 15:02:01 2020 +0100
+
+    CRUD offres terminé
+
+[33mcommit 6b1d5b15c16b977536c55cd3202095be996643a4[m
+Author: unknown <haroun.elleuch@esprit.tn>
+Date:   Sun Mar 22 20:06:49 2020 +0100
+
+    implémentaion modification offre (avec un bug)
+
+[33mcommit 6ca1ac7b8b21e32c72a4713346e1b9ca494b69d6[m
+Author: unknown <haroun.elleuch@esprit.tn>
+Date:   Sun Mar 22 18:32:51 2020 +0100
+
+    finalisation de l'affichage des offres
+
+[33mcommit 7ec3f71817c599dd721122d3b7afeab0a49b5675[m
+Author: unknown <haroun.elleuch@esprit.tn>
+Date:   Sun Mar 22 18:19:08 2020 +0100
+
+    Création d'offre finalisée
+
+[33mcommit 8ccb029216b33da23fae85bd7c1a8805ad487d17[m
+Author: unknown <haroun.elleuch@esprit.tn>
+Date:   Sun Mar 22 18:07:40 2020 +0100
+
+    Création d'offre sans jointure magasin finalisée
+
+[33mcommit a3dbaf1b4f493bb086523096f6572791df3c08cf[m
+Author: unknown <haroun.elleuch@esprit.tn>
+Date:   Sun Mar 22 16:24:34 2020 +0100
+
+    Début d'implémentaion d'ajout d'offres + implémention de fonctions de contrôles de saisie sur les dates dans InputCheck
+
+[33mcommit 6a4daf00ed758ade0664d373bd892474e3dbc697[m
+Author: unknown <haroun.elleuch@esprit.tn>
+Date:   Sun Mar 22 15:24:47 2020 +0100
+
+    Finalisation du rafraîchissement des données des offres + implémentation complète de la suppression. (+corrections itératives)
+
+[33mcommit d67d4e537496c3bcbf284899600109e7ed8c1876[m
+Author: unknown <haroun.elleuch@esprit.tn>
+Date:   Sun Mar 22 14:43:59 2020 +0100
+
+    Lien avec la vue
+
+[33mcommit bed07b4828f00326d1c4292632b66ef18defd8e6[m
+Author: unknown <haroun.elleuch@esprit.tn>
+Date:   Sun Mar 22 14:40:53 2020 +0100
+
+    Création de la classe offre ainsi que son service et son contrôleur
+
+[33mcommit 5c19f711b2af114d92d0eb589530a4f28e5e4d57[m
+Author: unknown <haroun.elleuch@esprit.tn>
+Date:   Fri Mar 20 22:50:43 2020 +0100
+
+    ajout d'un tooltip help
+
+[33mcommit 98109379db4102c16adccfa4c88eaa7271263203[m
+Author: unknown <haroun.elleuch@esprit.tn>
+Date:   Fri Mar 20 22:16:26 2020 +0100
+
+    finalisation de la recherche dynamique
+
+[33mcommit a8770aa4af0abcc21133e0e29e8e0b03b6ea2202[m
+Author: unknown <haroun.elleuch@esprit.tn>
+Date:   Fri Mar 20 21:40:15 2020 +0100
+
+    Premier commit avec partie magasin (CRUD) terminée
