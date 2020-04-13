@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="parent" prefHeight="626.0" prefWidth="805.0" styleClass="pane" stylesheets="@../assets/userwindow.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.shoppy.controller.CartWindowController">
+<AnchorPane id="AnchorPane" fx:id="parent" prefHeight="626.0" prefWidth="805.0" styleClass="pane" stylesheets="@../assets/userwindow.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.shoppy.controller.gestionCommandes.CartWindowController">
   <children>
                   <Pane prefHeight="51.0" prefWidth="800.0">
             <children>
