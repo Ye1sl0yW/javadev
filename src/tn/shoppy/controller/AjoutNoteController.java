@@ -10,11 +10,14 @@ package tn.shoppy.controller;
  * @author os
  */
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import tn.shoppy.services.Interaction_Notes;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
@@ -24,6 +27,7 @@ import javafx.scene.control.TextArea;
 import tn.shoppy.utils.HA.InputCheck;
 import tn.shoppy.model.Note;
 import tn.shoppy.model.Product;
+import tn.shoppy.services.Interaction_Products;
 import utils.testSession;
 
 
@@ -37,7 +41,7 @@ public class AjoutNoteController implements Initializable {
     @FXML private Text description_text;
     @FXML private Text marque_text;
     @FXML private Text prix_text;
-
+ 
     
     @FXML
     private MenuItem n0;
@@ -61,6 +65,8 @@ public class AjoutNoteController implements Initializable {
     @FXML
     private MenuButton note;
     private int NOTE=-1;
+    @FXML
+    private MenuButton choix;
 
     /**
      * Initializes the controller class.
@@ -69,6 +75,7 @@ public class AjoutNoteController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         updateFields(new Product());
+        setProducts();
         
         // PASSAGE D'INFORMATIONS ENTRE SCENES
 }
@@ -81,7 +88,7 @@ public class AjoutNoteController implements Initializable {
     private void updateFields(Product p){
        
         //                  MISE A JOUR TEXTS
-        
+        product_id=p.getId();
         nom_text.setText(p.getNom());
         description_text.setText(p.getDescription());;
         prix_text.setText(String.valueOf(p.getPrix()));;
@@ -115,6 +122,32 @@ public class AjoutNoteController implements Initializable {
     }
 
    
+void setProducts() {
+        choix.getItems().clear();
+        ResultSet r = tn.shoppy.services.Interaction_Products.getAllProducts();
+        try {
 
+            while (r.next()) {
+                String name = r.getString("nom"); 
+                MenuItem menuItem = new MenuItem(name);
+                menuItem.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent e) {
+                        String name = String.valueOf(((MenuItem) e.getSource()).getText().toString());
+                        //System.out.println(name);
+                        updateFields(Interaction_Products.getProductByName(name));
+
+                        choix.setText(name);
+                    }
+                });
+                // add event handlers, etc, as needed..
+                choix.getItems().add(menuItem);
+
+            }
+
+        } catch (SQLException s) {
+
+        }
+    }
   
 }

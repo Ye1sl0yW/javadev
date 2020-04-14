@@ -1,7 +1,7 @@
 
 package tn.shoppy.services;
 import java.sql.*;
-import utils.ConnexionDB;
+import tn.shoppy.utils.ConnexionDB;
 import tn.shoppy.model.Ticket;
 /**
  *
@@ -133,11 +133,37 @@ public class Interaction_Points {
             return r;
         }
         
+        public static ResultSet searchTicketsByDates(Date d1, Date d2){
+            ResultSet r = null;
+            try {
+		Connection c = ConnexionDB.getConnection();
+		Statement s = c.createStatement();
+		r=s.executeQuery("select * from tickets where date_exp between '"+d1+"' and '"+d2+"'");
+		
+	}
+		catch(SQLException e) {
+			
+		}
+            
+            return r;
+        }
         
         
         
-        
-        
+        public static ResultSet searchTicketsByMontants(int m1, int m2){
+            ResultSet r = null;
+            try {
+		Connection c = ConnexionDB.getConnection();
+		Statement s = c.createStatement();
+		r=s.executeQuery("select * from tickets where montant between "+m1+" and "+m2);
+		
+	}
+		catch(SQLException e) {
+			
+		}
+            
+            return r;
+        }
         
         
         

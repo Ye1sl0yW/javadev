@@ -2,7 +2,7 @@
 package tn.shoppy.services;
 import tn.shoppy.model.Portfolio;
 import java.sql.*;
-import utils.*;
+import tn.shoppy.utils.*;
 /**
  *
  * @author os
@@ -190,7 +190,20 @@ public class Interaction_Portfolios {
                  return null;
              }
          }
-         
+         public static ResultSet getPortfoliosByMontant(int m1, int m2){
+            ResultSet r = null;
+            try {
+		Connection c = ConnexionDB.getConnection();
+		Statement s = c.createStatement();
+		r=s.executeQuery("select p.id, p.user_id from portfolios p join tickets t on (p.id=t.portfolio_id) having sum(t.montant) between "+m1+" and "+m2);
+		
+	}
+		catch(SQLException e) {
+			
+		}
+            
+            return r;
+        }
         
 }
 

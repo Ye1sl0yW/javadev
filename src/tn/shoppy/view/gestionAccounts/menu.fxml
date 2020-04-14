@@ -31,7 +31,7 @@
         </rowConstraints>
          <children>
             <Separator orientation="VERTICAL" prefHeight="170.0" prefWidth="12.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowSpan="8" />
-            <JFXButton fx:id="evenements" onAction="#clickevent" prefHeight="35.0" prefWidth="102.0" text="Portfolio" textFill="#282727" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <JFXButton fx:id="portfolios" onAction="#clickevent" prefHeight="35.0" prefWidth="102.0" text="Portfolio" textFill="#282727" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></JFXButton>
@@ -51,7 +51,11 @@
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></JFXButton>
-            <JFXButton fx:id="challenges" prefHeight="49.0" prefWidth="104.0" text="Challenges" textFill="#252424" GridPane.columnIndex="2" GridPane.rowIndex="6">
+            <JFXButton fx:id="points" prefHeight="49.0" prefWidth="104.0" text="Points" textFill="#252424" GridPane.columnIndex="2" GridPane.rowIndex="6">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></JFXButton>
+               <JFXButton fx:id="sms" prefHeight="49.0" prefWidth="104.0" text="Envoyer un SMS" textFill="#252424" GridPane.columnIndex="2" GridPane.rowIndex="8">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></JFXButton>

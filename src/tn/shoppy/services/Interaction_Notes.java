@@ -6,7 +6,7 @@
 package tn.shoppy.services;
 import tn.shoppy.model.Note;
 import java.sql.*;
-import utils.ConnexionDB;
+import tn.shoppy.utils.ConnexionDB;
 
 /**
  *

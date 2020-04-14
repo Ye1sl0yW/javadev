@@ -38,10 +38,11 @@ import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.HBox;
 import tn.shoppy.utils.HA.InputCheck;
 
 
-public class PointsfromportfolioController implements Initializable {
+public class PointsController implements Initializable {
 
     @FXML private TableView<Ticket> tableView;
     @FXML private TableColumn<Ticket, Integer> id_col;
@@ -51,12 +52,20 @@ public class PointsfromportfolioController implements Initializable {
     @FXML private TableColumn<Ticket, String> user_col;
     @FXML private TextField search_input;
     @FXML private MenuButton search_col;
+    @FXML private MenuItem search_col_pid;
     @FXML private MenuItem search_col_m;
     @FXML private MenuItem search_col_d;
     @FXML private TextField portfolio_id_field;
     @FXML private TextField montant_field;
     @FXML private DatePicker date_field;
-  @FXML
+    @FXML private HBox date_choix;
+    @FXML private DatePicker date_debut;
+    @FXML private DatePicker date_fin;
+
+
+    
+    
+    @FXML
     private MenuButton user_id_field;
     @FXML private Text id_text;
     @FXML private Text portfolio_id_text;
@@ -76,6 +85,12 @@ public class PointsfromportfolioController implements Initializable {
     private Button modifier_button;
     @FXML
     private Button supprimer_button;
+    @FXML
+    private HBox montant_choix;
+    @FXML
+    private TextField montant_debut;
+    @FXML
+    private TextField montant_fin;
     
 
     /**
@@ -123,6 +138,8 @@ public class PointsfromportfolioController implements Initializable {
                 return;
             }
         }
+        
+        
         else{
         r=Interaction_Points.searchTicketsBy(searchcol,search_input.getText());
         }
@@ -157,12 +174,13 @@ public class PointsfromportfolioController implements Initializable {
     @FXML
     private void setSearchCol(ActionEvent event) {
         switch(((MenuItem) event.getSource()).getId()){
-            case "search_col_pid": searchcol="portfolio_id"; break;
-            case "search_col_m": searchcol="montant"; break;
-            case "search_col_d": searchcol="date_exp"; break;
+            case "search_col_pid": searchcol="portfolio_id";search_col.setText("User"); search_input.setVisible(true);date_choix.setVisible(false);montant_choix.setVisible(false);break;
+            case "search_col_m": searchcol="montant";search_col.setText("Montant");search_input.setVisible(false); montant_choix.setVisible(true);date_choix.setVisible(false);break;
+            case "search_col_d": searchcol="date_exp";search_col.setText("Date d'expiration");date_choix.setVisible(true);montant_choix.setVisible(false);search_input.setVisible(false); break;
             
         }
-        search_col.setText(searchcol);
+        resetTable();
+
 }
 
     private void updateFields(Ticket t){
@@ -266,4 +284,34 @@ new Alert(Alert.AlertType.ERROR, s).showAndWait();
         
     }
   }
+
+    @FXML
+    private void chercherpardate(ActionEvent event) {
+         ResultSet r = null;
+        
+            r=Interaction_Points.searchTicketsByDates(Date.valueOf(date_debut.getValue()), Date.valueOf(date_fin.getValue()));
+        
+                updateTable(r);
+
+    
+    }
+
+    @FXML
+    private void chercherparmontant(ActionEvent event) {
+        ResultSet r = null;
+        
+            r=Interaction_Points.searchTicketsByMontants(Integer.valueOf(montant_debut.getText()), Integer.valueOf(montant_fin.getText()));
+        
+                updateTable(r);
+    }
+
+    @FXML
+    private void resetsearch(ActionEvent event) {
+        search_input.clear();
+        date_debut.getEditor().clear();
+        date_fin.getEditor().clear();
+        montant_debut.clear();
+        montant_fin.clear();
+        resetTable();
+    }
 }

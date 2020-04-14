@@ -33,13 +33,15 @@ import tn.shoppy.utils.HA.ConnectionDB;
 public class MenuController implements Initializable {
 
     @FXML
-    private JFXButton evenements;
+    private JFXButton portfolios;
+    @FXML
+    private JFXButton associations;
     @FXML
     private JFXButton annonces;
     @FXML
     private JFXButton produits;
     @FXML
-    private JFXButton associations;
+    private JFXButton points;
     @FXML
     private JFXButton reclamations;
     @FXML
@@ -48,6 +50,8 @@ public class MenuController implements Initializable {
     private JFXButton utilisateurs;
     @FXML
     private JFXButton dashbord;
+    @FXML
+    private JFXButton sms;
 
     /**
      * Initializes the controller class.
@@ -106,6 +110,69 @@ public class MenuController implements Initializable {
                 ConnectionDB cbd = ConnectionDB.getInstance();
         Connection cnx = cbd.getCnx();
                 root = FXMLLoader.load(getClass().getResource("/tn/shoppy/view/Dashboard.fxml"));
+                Stage primaryStage = new Stage();
+                primaryStage.setTitle("Shoppy Desktop");
+                primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/tn/shoppy/resources/images/logo.png")));
+
+                Scene scene = new Scene(root);
+                primaryStage.setScene(scene);
+//        primaryStage.setResizable(false);          
+                primaryStage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
+        
+        portfolios.setOnAction(ev -> {
+            Parent root;
+            System.out.println("TEST");
+            try {
+                ConnectionDB cbd = ConnectionDB.getInstance();
+        Connection cnx = cbd.getCnx();
+                root = FXMLLoader.load(getClass().getResource("/tn/shoppy/view/portfolios.fxml"));
+                Stage primaryStage = new Stage();
+                primaryStage.setTitle("Shoppy Desktop");
+                primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/tn/shoppy/resources/images/logo.png")));
+
+                Scene scene = new Scene(root);
+                primaryStage.setScene(scene);
+//        primaryStage.setResizable(false);          
+                primaryStage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
+        
+        points.setOnAction(ev -> {
+            Parent root;
+            System.out.println("TEST");
+            try {
+                ConnectionDB cbd = ConnectionDB.getInstance();
+        Connection cnx = cbd.getCnx();
+                root = FXMLLoader.load(getClass().getResource("/tn/shoppy/view/points.fxml"));
+                Stage primaryStage = new Stage();
+                primaryStage.setTitle("Shoppy Desktop");
+                primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/tn/shoppy/resources/images/logo.png")));
+
+                Scene scene = new Scene(root);
+                primaryStage.setScene(scene);
+//        primaryStage.setResizable(false);          
+                primaryStage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
+        
+        sms.setOnAction(ev -> {
+            Parent root;
+            System.out.println("TEST");
+            try {
+                ConnectionDB cbd = ConnectionDB.getInstance();
+        Connection cnx = cbd.getCnx();
+                root = FXMLLoader.load(getClass().getResource("/tn/shoppy/view/envoisms.fxml"));
                 Stage primaryStage = new Stage();
                 primaryStage.setTitle("Shoppy Desktop");
                 primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/tn/shoppy/resources/images/logo.png")));

@@ -10,7 +10,7 @@ import com.nexmo.client.NexmoClient;
 import com.nexmo.client.sms.SmsSubmissionResponse;
 import com.nexmo.client.sms.SmsSubmissionResponseMessage;
 import com.nexmo.client.sms.messages.TextMessage;
-import utils.Interaction_SMS;
+import tn.shoppy.utils.Interaction_SMS;
 /**
  *
  * @author os

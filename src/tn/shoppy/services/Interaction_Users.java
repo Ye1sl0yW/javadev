@@ -5,7 +5,7 @@
  */
 package tn.shoppy.services;
 import java.sql.*;
-import utils.ConnexionDB;
+import tn.shoppy.utils.ConnexionDB;
 /**
  *
  * @author os
@@ -83,6 +83,38 @@ public class Interaction_Users {
 		Statement s = c.createStatement();
 		r=s.executeQuery("select username from users");
                 // where portfolio_id is not null
+	}
+		catch(SQLException e) {
+			System.out.println("ERREUR");
+		}
+            
+            return r;
+        }
+   
+   public static String getNumber(String username){
+            ResultSet r = null;
+            String number="";
+            try {
+		Connection c = ConnexionDB.getConnection();
+		Statement s = c.createStatement();
+		r=s.executeQuery("select number from users where username='"+username+"'");
+                // where portfolio_id is not null
+                number=r.getString("number");
+	}
+		catch(SQLException e) {
+			System.out.println("ERREUR");
+		}
+            
+            return number;
+        }
+   
+   public static ResultSet getAllUsers(){
+            ResultSet r = null;
+            try {
+		Connection c = ConnexionDB.getConnection();
+		Statement s = c.createStatement();
+		r=s.executeQuery("select * from users");
+                // where portfolio_id is null
 	}
 		catch(SQLException e) {
 			System.out.println("ERREUR");
